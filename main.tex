@@ -43,6 +43,16 @@ Dillenbourg \\ CHILI Lab, \'Ecole Polytechnique F\'ed\'erale de Lausanne}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{A different paradigm for educative robots}
 
+Henry is five and an half, and has been diagnosed with visuo-constructive
+deficits. He is under the care of an occupational therapist, and tries to improve
+his inability to draw letters in a consistent manner. Diego is six and struggles
+at school with his poor handwriting and even poorer self-confidence.
+
+While Henry is lively and always quick at shifting his attention from one
+activity to another, Diego is shy and poised. Two very different children,
+facing however the same difficulty to write in a legible manner.
+
+
 \begin{figure}
     \centering
     \includegraphics[width=0.9\linewidth]{henry}
@@ -51,10 +61,14 @@ Dillenbourg \\ CHILI Lab, \'Ecole Polytechnique F\'ed\'erale de Lausanne}
     \label{fig:henry}
 \end{figure}
 
+Remediations for handwriting difficulties
+
+\subsection{Learning by Teaching}
+
 The \emph{learning by teaching} paradigm, which engages the target student in
 the act of teaching another, has been shown to produce motivational,
-meta-cognitive, and educational benefits in a range of disciplines
-\cite{Rohrbeck2003}. To our best knowledge, the application of the paradigm to
+meta-cognitive, and educational benefits in a range of disciplines~\cite{Rohrbeck2003}. 
+To our best knowledge, the application of the paradigm to
 handwriting intervention remains, however, unexplored. One reason for this may
 due to the requirement of an appropriately unskilled peer for the target child
 to tutor, as this may present a logistical constraint if the target child is the
@@ -64,6 +78,36 @@ For handwriting, where one's skill level is visually evident, however, this
 acting is likely to be eventually detected. As such, there is motivation for the
 use of a teachable agent which can be configured for a variety of skill levels,
 and for which children do not have preconceptions about its handwriting ability.
+
+Robots have been used as teachers or social partners to promote children's
+learning in a range of contexts, most commonly related to language
+skills~\cite{han2010robot}, and less often to physical skills (such as
+calligraphy~\cite{Matsui2013}).  Looking at the converse (humans \emph{teaching}
+robots), Werfel notes in~\cite{Werfel2014} that most of the work focuses on the
+robot's benefits (in terms of language~\cite{Saunders2010} or
+physical~\cite{Mulling2013} skills, for example) rather than the learning
+experienced by the human tutor themselves.  Our work concentrates on this latter
+aspect: by demonstrating handwriting to a robot, we aim at improving the
+\emph{child's} performance. Note that our work must be distinguished from
+``learning from demonstration'' approaches to robots learning physical skills,
+as the agent we present is only simulating fine motor skills for interaction
+purposes.
+
+A robotic learning agent which employs the learning by teaching paradigm has
+previously been developed by Tanaka and Matsuzoe~\cite{Tanaka2012}. In their
+system, children learn vocabulary by teaching the {\sc nao} robot to act out
+verbs. The robot is tele-operated and mimics the actions that the children teach
+it, but with no long-term memory or learning algorithm in place.  Our project
+significantly extends this line of work in two ways. First, by investigating the
+context of children's acquisition of a challenging physical skill (handwriting),
+and second by proposing a robotic partner which is fully autonomous in its
+learning.
+
+
+\subsection{Teaching beyond ICT}
+
+This research departs from the traditional approaches to educative robotics
+(\fixme{cite reviews})
 
 Also notable, the robot is not used in the usual context of robotics or computer
 education, but instead in an activity -- handwriting -- which requires fine
@@ -86,16 +130,25 @@ learner which neither adults nor peers -- because of the social effects it would
 induce -- can convincingly play.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Robotic System}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The robotic system}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Algorithmic Approach}
+
+\begin{figure}[thpb]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{learningSdemo}
+    \caption{\label{fig:demonstrationShapes2}Example of the learning algorithm
+    responding (top) to user demonstration of shapes (bottom) for the letter `s'
+    (demonstrations received from two 7-8 year-old children taking turns).}
+
+\end{figure}
+
 
 \subsubsection{Path Manipulation in the Letters' Eigenspace}
 
@@ -281,5 +334,15 @@ learning activity, which we predict will lead to higher learning efficacy.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Acknowledgments}
+
+We would like to thank Deanna Hood for her key contribution to the project.
+This research was partially supported by the Funda\c{c}\~{a}o para a Ci\^{e}ncia
+e a Tecnologia (FCT) with reference UID/CEC/50021/2013, and by the Swiss
+National Science Foundation through the National Centre of Competence in
+Research Robotics.
+
+\bibliographystyle{abbrv}
+\bibliography{biblio}
+
 
 \end{document}
