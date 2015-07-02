@@ -133,9 +133,58 @@ induce -- can convincingly play.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The Robotic System}
+\section{Implementation of the Interaction}
+
+Figure~\ref{experimental_setup} illustrates our general experimental setup: a
+face-to-face child-robot interaction with an (autonomous) Aldebran's Nao robot.
+
+A tactile tablet (with a custom application) is used for both the robot and the
+child to write: during a typical round, the child requests the robot to write
+something (a single letter, a number or a full word), and push the tablet
+towards the robot, the robot writes on the tablet by gesturing the writing, but
+\emph{without actually physically touching the tablet}), the child then pull
+back the tablet, correct the robot's attempt by writing him/herself on top or
+next to the robot's writing (see the picture in Figure~\ref{fig:diego}), and
+``send'' his/her demonstration to the robot by pressing a small button on the
+tablet. The robot ``learns'' from this demonstration and tries again.
+
+Since the child is assumed to take on the role of the teacher, we had to ensure
+he/she would be able to manage by him/herself the turn-taking and the overall
+progression of the activity (moving to the next letter or word). In our design,
+the turn-taking relies on the robot prompting for feedback once it is done with
+its writing (simple sentences like ``What do you think?''), and pressing on a
+small robot icon on the tablet once the child has finished correcting. In our
+experiments, both were easy to grasp for children.
 
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{experimental_setup}
+    \caption{Our experimental setup: face-to-face interaction with a Nao robot.
+    The robot writes on the tactile tablet, the child then corrects the robot by
+    directly overwriting its letters on the tablet, with a stylus directly. An adult
+    (either a therapist or an experimenter, depending on the studies), remains next
+    to the child to guide the work (prompting, turn taking, etc.).}
+    \label{experimental_setup}
+\end{figure}
+
+Implementing such a system raises several challenges: first, acquiring,
+analyzing and learning from hand-written demonstration lays at the core of the
+our approach and we developed several algorithms for the robot to generate
+initial bad writing and to respond in an adequate manner, showing visible (but
+not too quick) writing improvements.
+
+Then, the actual implementation on the robot required the coordination of
+several modules (from performing gestures and acquiring the user's input to
+the high-level state machine), spread over several machines (the robot itself,
+one laptop and up to four tactile tablets for certain studies we conducted). We
+relied on ROS to ensure the synchronization and communication between these
+modules.
+
+Finally, the interaction itself, involving a robot, one or two children and, in
+one study, an occupational therapist, also raised by itself several challenges.
+
+We detail each of these points in the following sections.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Algorithmic Approach}
