@@ -222,7 +222,89 @@ according to their topological similarity.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Robotic Embodiement}
+\subsection{Robotic Implementation}
+
+In order to develop a teachable agent that is appropriate for engaging a child
+in the learning by teaching paradigm, we have established capabilities for the
+robot to engage in handwriting and interactive turn-taking.
+
+The {\sc nao} V4 humanoid robot, which has been purposely designed by Aldebaran
+Robotics to look approachable~\cite{Gouaillier2008}, is used for this work. It
+is a commercially affordable biped robot, 58cm tall, with 25 degrees of freedom,
+two cameras, speech capabilities and the ability to autonomously execute a range
+of tasks.
+
+Precise control over what the robot is writing is necessary in the proposed
+application of a handwriting. Because of the limited fine motor skills possible
+with such an affordable robot, in addition to the absence of force feedback and
+other technical necessities, we have configured the {\sc nao} to use simulated
+handwriting with a synchronised tablet to achieve this level of control. 
+
+The development of the necessary components for embedding the handwriting
+learning algorithm presented in Section \ref{sec:learningAlgorithm} in the
+humanoid agent are presented in the sections which follow.
+
+\subsubsection{Robot Trajectory Following Movements}
+
+Using simulated handwriting provides an opportunity for the robot's writing to
+appear smoother than would be achievable with a writing instrument. However, the
+robot's motions must still sufficiently match the displayed trajectory in order
+capture the engagement of the child participant in the action. Aldebaran's NaoQi
+API is used for the inverse kinematics of the trajectory following. The Robot
+Operating System (ROS)\footnote{The ROS stack for {\sc nao} is available at:
+\url{http://wiki.ros.org/nao_robot}.} is used for integration of the {\sc nao}
+with external reference frames, such as the tablet's location, using the $tf$
+transformation library \cite{Foote2013}.
+
+When using simulated handwriting, it is no longer necessary that the robot
+engages in the typical style of handwriting of using a writing instrument at a
+desk.  Having the robot point at a vertical writing surface to cause the
+trajectory to appear (as in Figure \ref{fig:naoWriting}) has several advantages:
+
+\begin{itemize}
+
+    \item The working space of the robot increases, both in the technical sense
+        and the interaction sense: someone can, in theory, show the tablet to
+        the robot from across the room and have it still respond, without
+        needing the tablet to be within arm's reach.
+
+    \item Concerns about whether or not the child would start mimicking the
+        robot's incorrect writing form (\eg pen grip) are mitigated. 
+
+    \item Perhaps most significantly, the accuracy of the matching of the
+        robot's motion with the trajectory displayed on the tablet is not as
+        critical. This is because a pen tip would be expected to touch the
+        tablet exactly at the trajectory point, while a fingertip may not.
+
+\end{itemize}
+
+\begin{figure}[thpb]
+     \begin{center}
+            \includegraphics[width=0.7\linewidth]{naoWriting2.png}
+    \end{center}
+    \caption{A demonstration of the robot simulating the writing of a word with
+    its finger. The motion of the robot is synchronised with the display of the
+    tablet, communicating over ROS.}%
+
+   \label{fig:naoWriting}
+\end{figure}
+
+We have therefore designed the system in such a way that the robot is simulating
+handwriting by pointing at the tablet\footnote{Teachers interviewed for their
+feedback on the system advised that children are asked to draw letters in
+the air in a similar manner as part of their handwriting education. The
+behaviour is hence not unfamiliar to children.}. As interacting with a
+tablet with one's finger is not uncommon, this may aid the acceptance of the
+writing style by users. 
+
+Because motion planning is performed with respect to the hand of the robot,
+rather than its fingertip, one or two of the orientation degrees of freedom of
+the hand are fixed to keep the finger approximately perpendicular to the writing
+surface, depending on the desired accuracy. The remaining free orientation(s),
+coupled with the whole-body motion control available, allow for a sufficient
+working space for writing on the entire tablet.
+
+
 \begin{figure}[ht]
 \centering
 
