@@ -534,7 +534,7 @@ The second question was focused on the content of the interaction. Our goal was
 to figure out what extent the child would actually improve the robot's
 writing.\\
 
-Diego is a 6 years hold child. 
+Diego is a six years old child. 
 Before the experiment, we could create a dataset of letters based on his main
 mistakes, but amplifiyed by PCA. Our idea was to make the robot
 exaggerating the mistakes of Diego. Thus, by correcting the robot, 
@@ -585,7 +585,7 @@ Diego.
 \subsection{Case Study 2: Henry}
 
 \subsubsection{Context, Study Design}
-Henry is a five and half years hold child. It is followed by an occupational
+Henry is a five and half years old child. It is followed by an occupational
 therapist. According to the therapist, he presents visuo-constructive deficits.
 From our perspective, the main effect of this trouble during handwriting
 activity was that Henry
@@ -605,7 +605,21 @@ sessions as well. This time, we assumed that a complex cenario like the one for 
 no longer relevent with Henry. We just introduced the robot and quickly
 said that it was seeking help to train for a robot handwriting contest.\\
 
+Before the experiment, Henry was working on writing numbers with the therapist.
+Hence we decided to turn the CoWriter activity to teach numbers to the robot. Build on
+existing iPad application actually used by occupational therapists (Dawson Toth's \emph{ABC's
+Writer}), we designed an Android application for pre-test and post-test. It consisted in drawing
+numbers following an helping pattern, that becomes more fine with levels in
+order to increase difficulty~\ref{fig:abc-writer}.\\
 
+Since Henry was frequently drawing horizontaly inverted numbers, or even
+absolutly unrecognizable shapes, we programmed the robot to refuse shapes that
+was too distant to a reference with a threshold we arbitrary fixed. In that way,
+the child was forced to take care on what he was providing to the robot as
+demonstration. Also, to make sure the robot was going to improve its handwriting
+and to clearly show this improvement, we decided to make it completly starting
+from scratch : for all numbers, the first try of the robot resulted in
+a simple vertical stroke (see the first robot's try in~\ref{learning_6_demos}).
 
 \begin{figure}
     \centering
@@ -614,7 +628,7 @@ said that it was seeking help to train for a robot handwriting contest.\\
     pre-test and post-test: the child must follow with his finger the path of
 the letter or number. We count the number of times the finger goes outside of
 the red-bordered area.}
-    \label{}
+    \label{fig:abc-writer}
 \end{figure}
 
 
@@ -628,7 +642,7 @@ the red-bordered area.}
         Henry decided that the robot's ``6'' was good enough, and went to
     another character: in that respect, he was the one leading the learning
 process of the robot.}
-    \label{henry_demos}
+    \label{learning_6_demos}
 \end{figure}
 
 
