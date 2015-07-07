@@ -240,39 +240,78 @@ one study, an occupational therapist, also raised by itself several challenges.
 We detail each of these points in the following sections.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Algorithmic Approach}
+\subsection{Generating and Learning Letters}
+
+Since our application is about teaching a robot to write, generating (initially
+bad) letters and learning from demonstrations is a core aspect of the project.
+
+The main insight for both the generation and the learning of letters is to
+reason in the eigenspace of the letters, instead of the cartesian space. The
+eigen space of each letters is spanned by the first $n$ eigenvectors (in our
+experiments, $3 < n < 6$) of the covariance matrix observed in a standard
+dataset of adult letters (the UJI Pen Characters 2 dataset~\cite{Llorens2008}).
+This procedure, based on a Principle Component Analysis (PCA), is explained in
+details in a previously published article~\cite{hood2015when}.
+
+By changing the eigenvalues associated to these eigenvectors and regenerating
+letters with the reverse procedure, it becomes then easy to generate new
+letters, with distortions that are actually plausible handwriting errors: they
+are actually \emph{exaggerations} of variance of writing styles that naturally
+exist amongst adult writers.  Figure~\ref{fig:sampleLetters} shows examples of
+deformed ``e'' and ``g'' generated with such a technique.
 
 \begin{figure}[thpb]
-    \centering
-    \includegraphics[width=0.6\columnwidth]{learningSdemo}
-    \caption{\label{fig:demonstrationShapes2}Example of the learning algorithm
-    responding (top) to user demonstration of shapes (bottom) for the letter `s'
-    (demonstrations received from two 7-8 year-old children taking turns).}
+\centering
+\subfigure{\raisebox{-0.5\height}{\includegraphics[width=0.08\columnwidth]{e1.png}}}
+\subfigure{\raisebox{-0.5\height}{\includegraphics[width=0.08\columnwidth]{e4.png}}}
+\subfigure{\raisebox{-0.5\height}{\includegraphics[width=0.08\columnwidth]{e3.png}}}
+\subfigure{\raisebox{-0.5\height}{\includegraphics[width=0.08\columnwidth]{e5.png}}}~~~~~
+\subfigure{\raisebox{-0.5\height}{\includegraphics[width=0.06\columnwidth]{g1.png}}}
+\subfigure{\raisebox{-0.5\height}{\includegraphics[width=0.06\columnwidth]{g3.png}}}
+\subfigure{\raisebox{-0.5\height}{\includegraphics[width=0.06\columnwidth]{g4.png}}}
+\subfigure{\raisebox{-0.5\height}{\includegraphics[width=0.06\columnwidth]{g5.png}}}
+\caption{\small \label{fig:sampleLetters}Sample letters generated from the PCA shape
+model on ``e'' (left) and ``g'' paths (right), generated randomly from
+parameters with $3\times$ the standard deviation observed in the dataset.}
 
 \end{figure}
 
+The same technique can be applied to \emph{classify} demonstrations,
+\emph{assess} their quality and
+\emph{learn} from them. Figure~\ref{fig:h} shows 9 allographs of ``h'' written by a 6
+years old child, along with the mean letter from the
+dataset (reference letter). By projecting each of the demonstrations onto the eigenspace
+of ``h'' (Figure~\ref{fig:h}b), we observe that:
 
-\subsubsection{Path Manipulation in the Letters' Eigenspace}
+\begin{itemize}
+    \item the different allographs can by clustered (with a $k$-means or
+        mean-shift algorithm) by their visual styles,
+    \item we can compute an euclidian distance to the reference letter to assess
+        the visual proximity of the demonstration with the expected letter, thus
+        providing a quantitative metric of writing performance.
+\end{itemize}
 
 \begin{figure}[ht!]
     \centering
-    \subfigure[Nine samples of the cursive ``h'', next to the reference]{
-        \includegraphics[height=6cm]{h}
+    \subfigure[Nine allographs of the cursive ``h'', next to the reference]{
+        \includegraphics[height=4.1cm]{h}
     }
-    \subfigure[Raw samples projected in the Eigenspace of the dataset]{
-        \includegraphics[height=4cm]{eigenspace-base}
-    }
-    \subfigure[Normalized samples, projected in the Eigenspace. The letters are
-    clustered according to their styles.]{
-        \includegraphics[height=4cm]{eigenspace-uniformization}
+    \subfigure[Same samples, normalized and projected in the eigen space spanned from the
+        3 first eigenvectors: clusters arise, that actually match writing styles.]{
+        \includegraphics[height=4.5cm]{eigenspace-uniformization}
     }
 
-    \caption{\small Projecting demonstrated letters onto the Eigenspace
+    \caption{\small Projecting demonstrated letters onto the eigenspace
     generated from the reference dataset effectively clusters the samples
-according to their topological similarity.}
-    \label{fig:stimuli}
+    according to their topological similarity. Allographs that are visually similar to
+    the reference are close to it in the eigenspace.}
+    \label{fig:h}
 \end{figure}
 
+The algorithm for machine-learning becomes then a simple matter of converging at
+a specific pace towards the child demonstration in the eigenspace.
+Figure~\ref{learning_6_demos}, at the end of the article, shows a complete learning cycle
+with the number ``6''.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Robotic Implementation}
@@ -696,7 +735,7 @@ robots, at several levels:
 \end{itemize}
 
 
-No surprinsingly, the role of the robot \textit{vis-à-vis} the teacher has also
+No surprinsingly, the role of the robot \textit{vis-a-vis} the teacher has also
 been questionned (including an angry email from one teacher: ``You want to
 replace us!''): as we see it, the role of the robot within the classroom (or at
 the therapist's surgery) does not infringe upon the role of the adult (teacher
