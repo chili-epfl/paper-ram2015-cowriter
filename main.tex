@@ -296,11 +296,7 @@ other technical necessities, we have opted for \emph{simulated
 handwriting}: the robot draws letters in the air, and the actual writing is
 displayed on a synchronised tablet.
 
-The development of the necessary components for embedding the handwriting
-learning algorithm presented in Section \ref{sec:learningAlgorithm} in the
-humanoid agent are presented in the sections which follow.
-
-\begin{figure}[ht]
+\begin{figure}[ht!]
 \centering
 
 \resizebox{0.6\linewidth}{!}{%
@@ -335,14 +331,31 @@ humanoid agent are presented in the sections which follow.
 }
 
 \caption{\small Overview of the system. In total, the system runs about 10 ROS nodes,
-    distributed over the robot itself, a central laptop and Android tablets. Since
-    the system does not require any CPU-intensive process, the laptop could be
-    removed and the whole logic could run on the robot. Due to the relative
-    difficulty to deploy and debug ROS nodes directly on the robot, we however
-    relied on the laptop during our experiments.}
+    distributed over the robot itself, a central laptop and Android tablets.}
 
     \label{fig:archi}
 \end{figure}
+
+The overall architecture of the system (Figure~\ref{fig:archi}) is therefore
+spread over several devices: the {\sc nao} robot itself, that we address via
+both a ROS API\footnote{The ROS stack for {\sc nao} is available at
+\url{http://wiki.ros.org/nao_robot}.} and the Aldebaran-provided NaoQI API, one
+to four Android tablets (the main tablet is used to print the robot's letter and
+to acquire the children' demonstrations. More tablets have been used in some
+studies, either to let the child input words to be written, or for the
+experimenter to qualitatively annotate the interaction in a synchronized
+fashion), and a central laptop running the machine learning algorithms, the
+robot's handwriting gesture generation and high level control of the activity.
+
+Since the system does not actually require any CPU-intensive process, the laptop
+could be removed and the whole logic could run on the robot. Due to the relative
+difficulty to deploy and debug ROS nodes directly on the robot, we however
+effectively kept the laptop during our experiments.
+
+Most of the nodes are written in Python, and the whole source code of the
+project is available online\footnote{The primary repository is
+\url{https://github.com/chili-epfl/cowriter_letter_learning}.}
+
 
 %
 %\begin{figure}[ht]
@@ -405,32 +418,30 @@ humanoid agent are presented in the sections which follow.
 %\end{figure}
 %
 
-\subsubsection{Robot Trajectory Following Movements}
+\subsubsection*{Trajectory Following Movements}
 
 Using simulated handwriting provides an opportunity for the robot's writing to
 appear smoother than would be achievable with a writing instrument. However, the
 robot's motions must still sufficiently match the displayed trajectory in order
 capture the engagement of the child participant in the action. Aldebaran's NaoQi
-API is used for the inverse kinematics of the trajectory following. The Robot
-Operating System (ROS)\footnote{The ROS stack for {\sc nao} is available at:
-\url{http://wiki.ros.org/nao_robot}.} is used for integration of the {\sc nao}
-with external reference frames, such as the tablet's location, using the $tf$
-transformation library \cite{Foote2013}.
+API is used for the inverse kinematics of the trajectory following. ROS is used
+for integration of {\sc nao} with external reference frames, such as the
+tablet's location, using the $tf$ transformation library~\cite{Foote2013}.
 
 When using simulated handwriting, it is no longer necessary that the robot
 engages in the typical style of handwriting of using a writing instrument at a
-desk.  Having the robot point at a vertical writing surface to cause the
-trajectory to appear (as in Figure \ref{fig:naoWriting}) has several advantages:
+desk. Having instead the robot point at the writing surface to cause the
+trajectory to appear (as seen in Figure \ref{fig:schools}, left) has several advantages:
 
 \begin{itemize}
 
     \item The working space of the robot increases, both in the technical sense
         and the interaction sense: someone can, in theory, show the tablet to
         the robot from across the room and have it still respond, without
-        needing the tablet to be within arm's reach.
+        needing the tablet to be within arm's reach,
 
     \item Concerns about whether or not the child would start mimicking the
-        robot's incorrect writing form (\eg pen grip) are mitigated. 
+        robot's incorrect writing form (\eg pen grip) are mitigated,
 
     \item Perhaps most significantly, the accuracy of the matching of the
         robot's motion with the trajectory displayed on the tablet is not as
@@ -438,17 +449,16 @@ trajectory to appear (as in Figure \ref{fig:naoWriting}) has several advantages:
         tablet exactly at the trajectory point, while a fingertip may not.
 
 \end{itemize}
-
-\begin{figure}[thpb]
-     \begin{center}
-            \includegraphics[width=0.7\linewidth]{naoWriting2.png}
-    \end{center}
-    \caption{\small A demonstration of the robot simulating the writing of a word with
-    its finger. The motion of the robot is synchronised with the display of the
-    tablet, communicating over ROS.}%
-
-   \label{fig:naoWriting}
-\end{figure}
+%
+%\begin{figure}[thpb]
+%     \begin{center}
+%            \includegraphics[width=0.7\linewidth]{naoWriting2.png}
+%    \end{center}
+%    \caption{\small A demonstration of the robot simulating the writing of a word with
+%    its finger. The motion of the robot is synchronised with the display of the
+%    tablet, communicating over ROS.}%
+%
+%   \label{fig:naoWriting}
 
 We have therefore designed the system in such a way that the robot is simulating
 handwriting by pointing at the tablet\footnote{Teachers interviewed for their
