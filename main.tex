@@ -61,10 +61,10 @@ self-confidence.
 While Henry is lively and always quick at shifting his attention from one
 activity to another, Diego is shy and poised. Two very different children,
 facing however the same difficulty to write in a legible manner. And, hidden
-behind this impaired skill, psycho-social difficulties also arise: they
-underperform at school, Henry has to go for follow-up visits to a therapist,
-they require ``special care''. This is a source of anxiety, for the children,
-and for their parents alike.
+beyond this impaired skill, psycho-social difficulties also arise: they
+underperform at school, Henry has to go for follow-up visits every week,...
+they live under the label ``requires special care''. This is a source of
+anxiety, for the children, and for their parents alike.
 
 \begin{figure}
     \centering
@@ -74,40 +74,40 @@ and for their parents alike.
     \label{fig:henry}
 \end{figure}
 
-Remediations for handwriting difficulties traditionally involve
-long interventions (at least 10 weeks~\cite{Hoy2011}), essentially handwriting
-training with an occu therapist, and primarly address the motor deficits.
-Improvements in self-confidence, anxiety occur (at best) as a consequence of the
-child improving his/her handwriting skills and improving his/her performances at
-school (when not too late).
+Remediations for handwriting difficulties traditionally involve long
+interventions (at least 10 weeks, \cite{Hoy2011}), essentially consisting in
+handwriting training with occupational therapists, and primarily addressing the
+\emph{motor} deficits.  Improvements in self-confidence and anxiety occur (at
+best) as a side-effect of the child improving his/her handwriting skills and,
+consequently, improving his/her performance at school.
 
 We present in this article a new take on this educative challenge, as a
-remediation procedure that involve a bad-writer robot that is taught by the
+remediation procedure that involve a \emph{bad writer} robot that is taught by the
 child: by building on the \emph{learning by teaching} paradigm, not only the
-child practises hand-writing but, as he/she takes on the role of the teacher,
-he/she also positively reinforce his/her self-esteem and motivation (he/she
-shifts from the ``underperformer'' to become ``the one who knows and teaches'').
+child practises hand-writing but, as (s)he takes on the role of the teacher,
+(s)he also positively reinforce his/her self-esteem and motivation: his/her
+social role shifts from the ``underperformer'' to ``the one who knows and teaches''.
 
 \subsection{Learning by Teaching}
 
-The \emph{learning by teaching} paradigm, which engages the target student in
-the act of teaching another, has been shown to produce motivational,
-meta-cognitive, and educational benefits in a range of disciplines~\cite{Rohrbeck2003}. 
-To our best knowledge, the application of the paradigm to
-handwriting intervention remains, however, unexplored. One reason for this may
-due to the requirement of an appropriately unskilled peer for the target child
-to tutor, as this may present a logistical constraint if the target child is the
-lowest performer in their class.  In some cases, it may be appropriate for a
-peer or teacher to simulate a na\"ive learner for the target child to teach.
-For handwriting, where one's skill level is visually evident, however, this
-acting is likely to be eventually detected. As such, there is motivation for the
-use of a teachable agent which can be configured for a variety of skill levels,
-and for which children do not have preconceptions about its handwriting ability.
+The \emph{learning by teaching} paradigm, which engages the student in the act
+of teaching another, has been shown to produce motivational, meta-cognitive, and
+educational benefits in a range of disciplines~\cite{Rohrbeck2003}.  The
+application of this paradigm to handwriting intervention remains, however,
+unexplored. One reason for this may be due to the requirement of an
+appropriately unskilled peer for the child to tutor: it may prove difficult if
+the child is the lowest performer in his/her class.  In some cases, it may be
+appropriate for a peer or teacher to simulate a na\"ive learner for the target
+child to teach. For handwriting however, where one's skill level is visually
+evident, this acting is likely to be rapidly detected. This motivates the use of
+an artificial teachable agent which can be configured for a variety of skill
+levels, and for which children do not have preconceptions about its handwriting
+ability.
 
 Robots have been used as teachers or social partners to promote children's
 learning in a range of contexts, most commonly related to language
 skills~\cite{han2010robot}, and less often to physical skills (such as
-calligraphy~\cite{Matsui2013}).  Looking at the converse (humans \emph{teaching}
+calligraphy~\cite{Matsui2013}). Looking at the converse (humans \emph{teaching}
 robots), Werfel notes in~\cite{Werfel2014} that most of the work focuses on the
 robot's benefits (in terms of language~\cite{Saunders2010} or
 physical~\cite{Mulling2013} skills, for example) rather than the learning
@@ -121,13 +121,12 @@ purposes.
 A robotic learning agent which employs the learning by teaching paradigm has
 previously been developed by Tanaka and Matsuzoe~\cite{Tanaka2012}. In their
 system, children learn vocabulary by teaching the {\sc nao} robot to act out
-verbs. The robot is tele-operated and mimics the actions that the children teach
-it, but with no long-term memory or learning algorithm in place.  Our project
-significantly extends this line of work in two ways. First, by investigating the
-context of children's acquisition of a challenging physical skill (handwriting),
-and second by proposing a robotic partner which is fully autonomous in its
-learning.
-
+verbs. The robot is tele-operated (Wizard-Of-Oz) and mimics the actions that the
+children teach it, but with no long-term memory or learning algorithm in place.
+Our project significantly extends this line of work in two ways. First, by
+investigating the context of children's acquisition of a challenging physical
+skill (handwriting), and second by proposing a robotic partner which is fully
+autonomous in its learning.
 
 \subsection{Teaching beyond ICT}
 
@@ -208,7 +207,7 @@ next to the robot's writing (see the picture in Figure~\ref{fig:diego}), and
 tablet. The robot ``learns'' from this demonstration and tries again.
 
 Since the child is assumed to take on the role of the teacher, we had to ensure
-he/she would be able to manage by him/herself the turn-taking and the overall
+(s)he would be able to manage by him/herself the turn-taking and the overall
 progression of the activity (moving to the next letter or word). In our design,
 the turn-taking relies on the robot prompting for feedback once it is done with
 its writing (simple sentences like ``What do you think?''), and pressing on a
@@ -219,13 +218,13 @@ experiments, both were easy to grasp for children.
 \begin{figure}
     \centering
     \includegraphics[width=0.6\columnwidth]{experimental_setup}
-    \caption{\small Our experimental setup: face-to-face interaction with a {\sc nao} robot.
-        The robot writes on the tactile tablet, the child then corrects the
-        robot by directly overwriting its letters on the tablet, with a stylus
-        directly. An adult (either a therapist or an experimenter, depending on
-        the studies), remains next to the child to guide the work (prompting,
-        turn taking, etc.). For some studies, a second tablet and an additional
-        camera (dashed) are employed.}
+    \caption{\small Our experimental setup: face-to-face interaction with a {\sc
+        nao} robot.  The robot writes on the tactile tablet, the child then
+        corrects the robot by directly overwriting its letters on the tablet
+        with a stylus. An adult (either a therapist or an experimenter,
+        depending on the studies), remains next to the child to guide the work
+        (prompting, turn taking, etc.). For some studies, a second tablet and an
+        additional camera (dashed) are employed.}
 
     \label{experimental_setup}
 \end{figure}
@@ -348,9 +347,9 @@ displayed on a synchronised tablet.
     >=latex,
     node distance=2cm,
     every edge/.style={draw, very thick},
-    redarrow/.style={draw=Red},
-    greenarrow/.style={draw=GreenYellow},
-    yellowarrow/.style={draw=BurntOrange},
+    redarrow/.style={draw,red, text=black},
+    greenarrow/.style={draw,GreenYellow,text=black},
+    yellowarrow/.style={draw,BurntOrange,text=black},
     cmpt/.style={draw, align=center, rounded corners, inner sep=5pt, font=\sf, fill=black!20},
     label/.style={midway, align=left, font=\scriptsize\sf, fill=white, above,opacity=0,text opacity=1}]
 
@@ -384,7 +383,7 @@ spread over several devices: the {\sc nao} robot itself, that we address via
 both a ROS API\footnote{The ROS stack for {\sc nao} is available at
 \url{http://wiki.ros.org/nao_robot}.} and the Aldebaran-provided NaoQI API, one
 to four Android tablets (the main tablet is used to print the robot's letter and
-to acquire the children' demonstrations. More tablets have been used in some
+to acquire the children's demonstrations. More tablets have been used in some
 studies, either to let the child input words to be written, or for the
 experimenter to qualitatively annotate the interaction in a synchronized
 fashion), and a central laptop running the machine learning algorithms, the
