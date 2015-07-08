@@ -267,21 +267,16 @@ letters with the reverse procedure, it becomes then easy to generate new
 letters, with distortions that are actually plausible handwriting errors: they
 are actually \emph{exaggerations} of variance of writing styles that naturally
 exist amongst adult writers.  Figure~\ref{fig:sampleLetters} shows examples of
-deformed ``e'' and ``g'' generated with such a technique.
+deformed ``g'' generated with such a technique.
 
-\begin{figure}[thpb]
-\centering
-\subfigure{\raisebox{-0.5\height}{\includegraphics[width=0.08\columnwidth]{e1.png}}}
-\subfigure{\raisebox{-0.5\height}{\includegraphics[width=0.08\columnwidth]{e4.png}}}
-\subfigure{\raisebox{-0.5\height}{\includegraphics[width=0.08\columnwidth]{e3.png}}}
-\subfigure{\raisebox{-0.5\height}{\includegraphics[width=0.08\columnwidth]{e5.png}}}~~~~~
-\subfigure{\raisebox{-0.5\height}{\includegraphics[width=0.06\columnwidth]{g1.png}}}
-\subfigure{\raisebox{-0.5\height}{\includegraphics[width=0.06\columnwidth]{g3.png}}}
-\subfigure{\raisebox{-0.5\height}{\includegraphics[width=0.06\columnwidth]{g4.png}}}
-\subfigure{\raisebox{-0.5\height}{\includegraphics[width=0.06\columnwidth]{g5.png}}}
-\caption{\small \label{fig:sampleLetters}Sample letters generated from the PCA shape
-model on ``e'' (left) and ``g'' paths (right), generated randomly from
-parameters with $3\times$ the standard deviation observed in the dataset.}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{cowriter-g}
+    \caption{\small \label{fig:sampleLetters} \textbf{Generating bad letters}:
+        effect of varying the first five eigenvalues (rows) of the shape model
+        of ``g'' by different factors (columns). The percentage of the total
+        variance in the dataset explained by each eigenvalue is shown      on
+        the appropriate row.}
 
 \end{figure}
 
