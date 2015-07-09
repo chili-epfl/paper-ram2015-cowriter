@@ -585,6 +585,18 @@ Table~\ref{studies} gives an overview of these studies.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Studies at School}
 
+Over the two years of the project, we conducted four studies in schools
+(Figure~\ref{fig:schools}). These experiments were meant to technically validate
+the system (is it actually able to autonomously write and learn from
+demonstrations?) and the interaction (is the apparatus easy to grasp and to
+interact with for children), and to study the initial acceptance of the robot in
+the school environment (we conducted several formal and informal discussions
+with teachers).
+
+We also relied on these four studies to acquire a dataset of children's
+handwritten letters and to study how they engage with the robot (and maintain or
+not this engagement).
+
 \begin{figure}
     \centering
     \includegraphics[height=3.9cm]{schools}
@@ -595,26 +607,79 @@ minutes), either alone or in small groups.}
     \label{fig:schools}
 \end{figure}
 
-\paragraph{Engagement levels}
+Critically, these studies were conducted with \emph{whole classes}: we did not
+select underperforming children that requires careful beforehand organization
+with the school to limit ethical issues. Having more children (73 in total) was
+however beneficial for these preliminary studies.
 
-A conclusion drawn in a systematic review of classical handwriting
-interventions~\cite{Hoy2011} is that any of the studies considered which
-involved fewer than two practice sessions per week and fewer than a total of 20
-practice sessions, including homework, were not found to demonstrate effective
-results. This highlights the necessity to engage students in an interaction
-which will be sustainable over the long-term if we want to address research
-questions which involve the measurement of learning gains.
+\paragraph{System validation}
 
-\begin{figure}
+From a technical perspective, the system achieves an acceptable level of
+reliability and allow a technically sound autonomous interaction. For instance,
+during the second school study (\textit{Florimont}), the robot withstood
+interactions which lasted for a total of 160 minutes.  During this time the
+robot wrote 335 letters, 152 of which in response to demonstrations received
+from the 21 children. Technical intervention was only required for the three
+instances that the robot fell later in that day.  Otherwise, the technical
+components of the system operated autonomously and as expected over the
+sessions.
+
+Due to the modular software architecture (about 10 ROS nodes), crashes occurring
+during the sessions were usually quickly resolved by re-launching the faulty
+node alone, and did not significantly impact the interaction.
+
+The otherwise technical limitations were related to some letters or writing
+style (most notably, the ones requiring multiple strokes per letter) not being
+adequately processed by the learning algorithm. Support for such letters has
+been since added.
+
+\paragraph{Acceptance}
+
+For the approach to be effective, it is critical that children recognize and
+accept that the robot is writing by itself. When asked, no child indicated that
+they did not believe that the robot was writing by itself. There were, at times,
+questions about the robot's writing method at the beginning of the interaction,
+but when advised that the robot ``tells the tablet what it wants to write,''
+this was accepted by the children.  Besides, teachers interviewed for their
+feedback on the system advised that children are asked to draw letters in the
+air in a similar manner as part of their handwriting education. The behaviour is
+hence not unfamiliar to children.
+
+\paragraph{Engagement}
+
+As indicated in the introduction, literature~\cite{Hoy2011} suggests that a
+total of 20 handwriting practice sessions is found to be the minimum to demonstrate effective
+results in handwriting remediation. This highlights the necessity to sustain
+engagement over the long-term if we want to achieve measurable learning gains.
+
+Factually, the children engaged into the teaching activity: in the
+\textit{Florimont} study, for instance, they demonstrated an average of
+10.9 demonstration letters (SD = 4.4) for an average session duration of 11 minutes.
+In 9 out of the 14 sessions (64\%), the robot
+received demonstration letters even \emph{after} reaching the final stage of the
+interaction, suggesting an intrinsic motivation to further engage in the
+interaction.
+
+\begin{figure}[ht!]
     \centering
     \includegraphics[width=0.9\linewidth]{engagement}
-    \caption{Engagement level of the child, manually annotated by two judges
-        over the 13 min long interaction (Cronbach’s alpha test: $\alpha = .82$,
-        good inter-judge agreement). The vertical lines represent activity
+    \caption{Engagement level of one child, manually annotated by two judges
+        over a 13 min long interaction (Cronbach’s alpha test: $\alpha = .82$,
+        good inter-judge agreement). 0 means ``complete disengagement from the
+        task'', 6 means ``full engagement''. The vertical lines represent activity
     switches between handwriting teaching and story-telling (used as a
     distruber).}
-    \label{}
+    \label{engagement_level}
 \end{figure}
+
+We also conducted a qualitative assessment of the engagement levels during the
+interaction sessions (studies \textit{Haut-Lac} and \textit{ISG 2}).
+Figure~\ref{engagement_level} shows the result for one child, with a moderate
+level of engagement. On-going research in our group aims at assessing such
+engagement levels in real-time, and adapt accordingly its behaviour.
+
+Other qualitative assessment of engagement over longer interactions were
+conducted during the case studies, as reported in the following section.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Case Study 1: Diego}
