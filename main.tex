@@ -1,3 +1,4 @@
+%\documentclass[twocolumn]{article}
 \documentclass{article}
 
 \usepackage{graphicx} 
@@ -301,11 +302,11 @@ of ``h'' (Figure~\ref{fig:h}b), we observe that:
 \begin{figure}[ht!]
     \centering
     \subfigure[Nine allographs of the cursive ``h'', next to the reference]{
-        \includegraphics[height=4.1cm]{h}
+        \includegraphics[width=0.4\columnwidth]{h}
     }
     \subfigure[Same samples, normalized and projected in the eigen space spanned from the
         3 first eigenvectors: clusters arise, that actually match writing styles.]{
-        \includegraphics[height=4.5cm]{eigenspace-uniformization}
+        \includegraphics[width=0.4\columnwidth]{eigenspace-uniformization}
     }
 
     \caption{\small Projecting demonstrated letters onto the eigenspace
@@ -456,16 +457,12 @@ working space for writing on the entire tablet.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Field Studies}
 
-To date, the presented system has been deployed and tested in three different
-schools (totalling child-robot interactions with more than 70 children, aged 5
-to 8) and we also conducted 2 case studies over several weeks.
-Table~\ref{studies} gives an overview of these studies.
-
 \begin{table}[ht!]
 \centering
 \caption{\small Field studies conducted within the project}
 \label{studies}
-\begin{tabular}{@{}lp{4.5cm}p{2.2cm}p{2.5cm}l@{}}
+\footnotesize
+\begin{tabular}{@{}lp{4cm}p{2.2cm}p{1.8cm}l@{}}
 \toprule
 {\bf Study}     & {\bf Type}                                    & {\bf Duration}              & {\bf Children \#}                     & {\bf Ages} \\ \midrule
 {\it ISG 1}     & Unstructured group interaction at school      & 16 min/group               & 4 $\times$ 8 children                 & 6-7        \\
@@ -476,6 +473,11 @@ Table~\ref{studies} gives an overview of these studies.
 {\it Henry}     & Case-study, spanning over 4 weeks              & 1h $\times$ 4 weeks        & 1                                     & 5          \\ \bottomrule
 \end{tabular}
 \end{table}
+
+To date, the presented system has been deployed and tested in three different
+schools (totalling child-robot interactions with more than 70 children, aged 5
+to 8) and we also conducted 2 case studies over several weeks.
+Table~\ref{studies} gives an overview of these studies.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Studies at School}
