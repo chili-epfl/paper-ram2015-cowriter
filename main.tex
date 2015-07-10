@@ -25,7 +25,7 @@
 \newcommand{\etc}{\textit{etc.}\xspace}
 \newcommand{\vs}{\textit{vs.}\xspace}
 
-\title{Learning by Teaching a Robot: the Case of Handwriting}
+\title{Learning by Teaching a Robot:\\The Case of Handwriting}
 
 \author{S\'everin Lemaignan$^1$, Alexis Jacq$^{1,2}$, Fernando Garcia$^1$,
     Deanna Hood$^1$, \\Aude
@@ -336,7 +336,7 @@ actual writing is displayed on a synchronised tablet.
 \begin{figure}[ht!]
 \centering
 
-\resizebox{0.6\linewidth}{!}{%
+\resizebox{0.7\linewidth}{!}{%
 
 \begin{tikzpicture}[
     >=latex,
@@ -353,13 +353,20 @@ actual writing is displayed on a synchronised tablet.
     \node[below left=2 of laptop] (tablet) {\includegraphics[width=2cm]{tablet+stylus}};
     \node[above=2 of laptop] (selection) {\includegraphics[width=2cm]{selection_tablet}};
 
+    \node[draw,above right=2 of laptop,anchor=north west,text width=4cm] (processes)
+    {\sf\scriptsize machine-learning, \\letters/gestures
+    generation, \\interaction supervision};
+    \path (laptop) edge[dashed] (processes);
+
     \path (nao) edge [->,redarrow, bend left] node[label, auto] {robot state} (laptop);
-    \path (laptop) edge [->,greenarrow, bend left] node[label, auto] {writing gesture} (nao);
+    \path (laptop) edge [->,greenarrow, bend left] node[label, auto] {writing gestures} (nao);
 
     \path (tablet) edge [->,redarrow, bend left] node[label, auto] {demonstrations,\\turn taking} (laptop);
-    \path (laptop) edge [->,redarrow, bend left] node[label, auto=right] {letter to write} (tablet);
+    \path (laptop) edge [->,redarrow, bend left] node[label,
+    auto=right,align=right]
+    {path of\\ letters to display} (tablet);
 
-    \path (selection) edge [->,redarrow] node[label, auto] {letter/word to write} (laptop);
+    \path (selection) edge [->,redarrow] node[label, auto=right] {letter/word to write} (laptop);
 
     \path (-5, 2) edge [->, redarrow] node[label] {ROS} ++(1, 0);
     \path (-5, 2.6) edge [->, greenarrow] node[label] {NaoQI} ++(1, 0);
@@ -367,7 +374,7 @@ actual writing is displayed on a synchronised tablet.
 \end{tikzpicture}
 }
 
-\caption{\small Overview of the system. In total, the system runs about 10 ROS nodes,
+\caption{\small \textbf{Overview of the system}. In total, the system runs about 10 ROS nodes,
     distributed over the robot itself, a central laptop and Android tablets.}
 
     \label{fig:archi}
@@ -378,68 +385,21 @@ spread over several devices: the {\sc nao} robot itself, that we address via
 both a ROS API\footnote{The ROS stack for {\sc nao} is available at
 \url{http://wiki.ros.org/nao_robot}.} and the Aldebaran-provided NaoQI API, one
 to four Android tablets (the main tablet is used to print the robot's letter and
-to acquire the children's demonstrations. More tablets have been used in some
+to acquire the children's demonstrations; more tablets have been used in some
 studies, either to let the child input words to be written, or for the
 experimenter to qualitatively annotate the interaction in a synchronized
 fashion), and a central laptop running the machine learning algorithms, the
 robot's handwriting gesture generation and high level control of the activity.
 
 Since the system does not actually require any CPU-intensive process, the laptop
-could be removed and the whole logic could run on the robot. Due to the relative
-difficulty to deploy and debug ROS nodes directly on the robot, we however
-effectively kept the laptop during our experiments.
+can be removed and the whole logic run on the robot. Due to the relative
+difficulty to deploy and debug ROS nodes directly on the robot, the laptop
+remains however convenient during the development phase and we kept if during
+our experiments.
 
 Most of the nodes are written in Python, and the whole source code of the
 project is available online\footnote{The primary repository is
 \url{https://github.com/chili-epfl/cowriter_letter_learning}.}
-
-\subsubsection*{Trajectory Following Movements}
-
-Using simulated handwriting provides an opportunity for the robot's writing to
-appear smoother than would be achievable with a writing instrument. However, the
-robot's motions must still sufficiently match the displayed trajectory in order
-capture the engagement of the child participant in the action. Aldebaran's NaoQi
-API is used for the inverse kinematics of the trajectory following. ROS is used
-for integration of {\sc nao} with external reference frames, such as the
-tablet's location, using the $tf$ transformation library~\cite{Foote2013}.
-
-When using simulated handwriting, it is no longer necessary that the robot
-engages in the typical style of handwriting of using a writing instrument at a
-desk. Having instead the robot point at the writing surface to cause the
-trajectory to appear (as seen in Figure \ref{fig:schools}, left) has several advantages:
-
-\begin{itemize}
-
-    \item The working space of the robot increases, both in the technical sense
-        and the interaction sense: someone can, in theory, show the tablet to
-        the robot from across the room and have it still respond, without
-        needing the tablet to be within arm's reach,
-
-    \item Concerns about whether or not the child would start mimicking the
-        robot's incorrect writing form (\eg pen grip) are mitigated,
-
-    \item Perhaps most significantly, the accuracy of the matching of the
-        robot's motion with the trajectory displayed on the tablet is not as
-        critical. This is because a pen tip would be expected to touch the
-        tablet exactly at the trajectory point, while a fingertip may not.
-
-\end{itemize}
-
-We have therefore designed the system in such a way that the robot is simulating
-handwriting by pointing at the tablet\footnote{Teachers interviewed for their
-feedback on the system advised that children are asked to draw letters in
-the air in a similar manner as part of their handwriting education. The
-behaviour is hence not unfamiliar to children.}. As interacting with a
-tablet with one's finger is not uncommon, this may aid the acceptance of the
-writing style by users. 
-
-Because motion planning is performed with respect to the hand of the robot,
-rather than its fingertip, one or two of the orientation degrees of freedom of
-the hand are fixed to keep the finger approximately perpendicular to the writing
-surface, depending on the desired accuracy. The remaining free orientation(s),
-coupled with the whole-body motion control available, allow for a sufficient
-working space for writing on the entire tablet.
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -447,27 +407,27 @@ working space for writing on the entire tablet.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Field Studies}
 
+To date, the system has been deployed and tested in three different
+schools (totalling child-robot interactions with more than 70 children, aged 5
+to 8) and we also conducted 2 case studies that lasted several weeks.
+Table~\ref{studies} gives an overview of these studies.
+
 \begin{table}[ht!]
 \centering
 \caption{\small Field studies conducted within the project}
 \label{studies}
 \footnotesize
-\begin{tabular}{@{}lp{4cm}p{2.2cm}p{1.8cm}l@{}}
+\begin{tabular}{@{}lp{4cm}p{2.2cm}p{2cm}l@{}}
 \toprule
-{\bf Study}     & {\bf Type}                                    & {\bf Duration}              & {\bf Children \#}                     & {\bf Ages} \\ \midrule
+{\bf Study}     & {\bf Type}                                    & {\bf Avg. duration}              & {\bf Children \#}                     & {\bf Ages} \\ \midrule
 {\it ISG 1}     & Unstructured group interaction at school      & 16 min/group               & 4 $\times$ 8 children                 & 6-7        \\
 {\it Florimont} & Individual/Pair interaction at school         & 11 min/group               & 7 (individual) + 7 $\times$ 2 (pairs) & 7-8        \\
-{\it Vincent}     & Case-study, spanning over 4 weeks              & 1.5 hours $\times$ 4 weeks & 1                                     & 5          \\
-{\it Haut-Lac}  & Pair (with turn-taking) interaction at school & 26 min/group                            & 7 $\times$ 2                          & 5-6        \\
+{\it Vincent}     & Case-study, spanning over 4 weeks              & 1.5h $\times$ 4 weeks & 1                                     & 6          \\
+{\it Haut-Lac}  & Pair interaction at school & 26 min/group                            & 7 $\times$ 2                          & 5-6        \\
 {\it ISG 2}     & Individual interaction at school              & 18 min                            & 6                                     & 5-6        \\
 {\it Thomas}     & Case-study, spanning over 4 weeks              & 1h $\times$ 4 weeks        & 1                                     & 5          \\ \bottomrule
 \end{tabular}
 \end{table}
-
-To date, the presented system has been deployed and tested in three different
-schools (totalling child-robot interactions with more than 70 children, aged 5
-to 8) and we also conducted 2 case studies over several weeks.
-Table~\ref{studies} gives an overview of these studies.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Studies at School}
@@ -475,14 +435,11 @@ Table~\ref{studies} gives an overview of these studies.
 Over the two years of the project, we conducted four studies in schools
 (Figure~\ref{fig:schools}). These experiments were meant to technically validate
 the system (is it actually able to autonomously write and learn from
-demonstrations?) and the interaction (is the apparatus easy to grasp and to
-interact with for children), and to study the initial acceptance of the robot in
-the school environment (we conducted several formal and informal discussions
-with teachers).
-
-We also relied on these four studies to acquire a dataset of children's
-handwritten letters and to study how they engage with the robot (and maintain or
-not this engagement).
+demonstrations?) and test the interaction (is the apparatus easy to grasp and to
+interact with for children?). We also studied the initial acceptance of the
+robot in the school environment (through several formal and informal discussions
+with teachers) and how children engage with the robot (and maintain or not this
+engagement).
 
 \begin{figure}
     \centering
@@ -494,10 +451,10 @@ minutes), either alone or in small groups.}
     \label{fig:schools}
 \end{figure}
 
-Critically, these studies were conducted with \emph{whole classes}: we did not
-select underperforming children that requires careful beforehand organization
-with the school to limit ethical issues. Having more children (73 in total) was
-however beneficial for these preliminary studies.
+Critically, these studies were conducted with \emph{whole classes}: we decided
+not to select specifically underperforming children as having more children (73
+in total) was beneficial for these preliminary studies, and this would have
+besides required careful organization with the school due to ethical concerns.
 
 \paragraph{System validation}
 
@@ -507,37 +464,43 @@ during the second school study (\textit{Florimont}), the robot withstood
 interactions which lasted for a total of 160 minutes.  During this time the
 robot wrote 335 letters, 152 of which in response to demonstrations received
 from the 21 children. Technical intervention was only required for the three
-instances that the robot fell later in that day.  Otherwise, the technical
+instances that the robot fell during that day.  Otherwise, the technical
 components of the system operated autonomously and as expected over the
 sessions.
 
-Due to the modular software architecture (about 10 ROS nodes), crashes occurring
-during the sessions were usually quickly resolved by re-launching the faulty
-node alone, and did not significantly impact the interaction.
+Due to the modular software architecture (about 10 ROS nodes), the occasional
+crashes occurring during others sessions were usually quickly resolved by
+re-launching the faulty node alone, and did not significantly impact the
+interaction.
 
 The otherwise technical limitations were related to some letters or writing
 style (most notably, the ones requiring multiple strokes per letter) not being
 adequately processed by the learning algorithm. Support for such letters has
-been since added.
+been added as a follow-up of the studies.
 
 \paragraph{Acceptance}
 
-For the approach to be effective, it is critical that children recognize and
-accept that the robot is writing by itself. When asked, no child indicated that
-they did not believe that the robot was writing by itself. There were, at times,
-questions about the robot's writing method at the beginning of the interaction,
-but when advised that the robot ``tells the tablet what it wants to write,''
-this was accepted by the children.  Besides, teachers interviewed for their
-feedback on the system advised that children are asked to draw letters in the
-air in a similar manner as part of their handwriting education. The behaviour is
-hence not unfamiliar to children.
+Children's recognition that the robot is writing by itself is critical for our
+approach to be effective. When asked, no child indicated that they did not
+believe that the robot was writing by itself. There were, at times, questions
+about the robot's writing method at the beginning of the interaction, but when
+advised that the robot ``tells the tablet what it wants to write,'' this was
+accepted by the children.  Besides, teachers interviewed for their feedback on
+the system advised that children are asked to draw letters in the air in a
+similar manner as part of their handwriting education. The behaviour is hence
+not unfamiliar to children.
 
-\paragraph{Engagement}
+More generally, the approach was well accepted and recognized as useful and
+promising by teachers and parents; this was \textit{a posteriori} confirmed by
+the numerous spontaneous contacts made by parents and therapists who were
+looking forward to use the system with their children.
 
-As indicated in the introduction, literature~\cite{Hoy2011} suggests that a
-total of 20 handwriting practice sessions is found to be the minimum to demonstrate effective
-results in handwriting remediation. This highlights the necessity to sustain
-engagement over the long-term if we want to achieve measurable learning gains.
+\paragraph{Sustained engagement}
+
+As indicated in the introduction, the literature suggests that 20 handwriting
+practice sessions is found to be the minimum to demonstrate effective results in
+handwriting remediation~\cite{Hoy2011}. This highlights the necessity to sustain
+a child-robot engagement over the long-term if we want to achieve measurable learning gains.
 
 Factually, the children engaged into the teaching activity: in the
 \textit{Florimont} study, for instance, they demonstrated an average of
@@ -550,7 +513,7 @@ interaction.
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.9\linewidth]{engagement}
-    \caption{Engagement level of one child, manually annotated by two judges
+    \caption{\small Engagement level of one child, manually annotated by two judges
         over a 13 min long interaction (Cronbach’s alpha test: $\alpha = .82$,
         good inter-judge agreement). 0 means ``complete disengagement from the
         task'', 6 means ``full engagement''. The vertical lines represent activity
@@ -559,13 +522,15 @@ interaction.
     \label{engagement_level}
 \end{figure}
 
-We also conducted a qualitative assessment of the engagement levels during the
-interaction sessions (studies \textit{Haut-Lac} and \textit{ISG 2}).
-Figure~\ref{engagement_level} shows the result for one child, with a moderate
-level of engagement. On-going research in our group aims at assessing such
-engagement levels in real-time, and adapt accordingly its behaviour.
+We also conducted a qualitative assessment of the engagement levels during
+several interaction sessions (studies \textit{Haut-Lac} and \textit{ISG 2}).
+While the overall engagement was high, Figure~\ref{engagement_level} shows an
+example of a child with moderate level of engagement. On-going research in our
+group aims at assessing such engagement levels in real-time, so that the robot
+can address possible disengagement (by changing/adapting its physical behaviour,
+by switching to different activities, etc.)
 
-Other qualitative assessment of engagement over longer interactions were
+Further qualitative assessment of engagement over longer interactions were
 conducted during the case studies, as reported in the following section.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -639,7 +604,7 @@ before and after his help (Fig.~\ref{fig:stimuli}).
     }
 
     \caption{\small Text generated by the robot, before and after training with
-    the child. As an example, the red box emphasizes the changes on the word
+        the child (in French). As an example, the red box emphasizes the changes on the word
     ``envoyer''.}
     \label{fig:stimuli}
 \end{figure}
@@ -740,8 +705,8 @@ pictured on Figure~\ref{henry_demos}.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
 
-The CoWriter project, as presented above, gives a novel perspective on educative
-robots, at several levels:
+We believe that this research provides a novel perspective on educative
+robots at several levels. We show that:
 
 \begin{itemize}
     \item robots in an educative context are \textbf{relevant and effective beyond ICT
@@ -761,46 +726,50 @@ robots, at several levels:
 
     \item this proves essential to \textbf{sustain a long-term interaction} (several
         hours) around a fundamentally routine -- yet challenging -- educational
-        task (hand-writing learning).
+        task (hand-writing learning),
+
+    \item besides, the social commitment induces a \textbf{cognitive engagement}
+        of the child with the robot which is \textbf{a key learning lever} as
+        its elicits \textbf{reflective, meta-cognitive mechanisms on the
+        learning task}.
 \end{itemize}
 
 
-No surprisingly, the role of the robot \textit{vis-a-vis} the teacher has also
-been questioned (including an angry email from one teacher: ``You want to
-replace us!''): as we see it, the role of the robot within the classroom (or at
-the therapist's surgery) does not infringe upon the role of the adult (teacher
-or therapist).  The core of the \emph{learning by teaching} paradigm relies on
-the child becoming the teacher of an underperforming pupil (the robot): from
-that perspective, the robot does not replace the teacher, on the contrary. It
-plays a different role in the classroom, which happen to be novel as well: the
-robot is the \emph{least} performing student, and however a very patient, always
-eager to improve, one.
+The place and role of the robot \textit{vis-\`a-vis} the teacher can be
+questioned: as we see it, the role of the robot within the classroom (or at the
+therapist's surgery) does not infringe upon the role of the adult (teacher or
+therapist).  The core of the \emph{learning by teaching} paradigm relies on the
+child becoming the teacher of an underperforming pupil (the robot): from that
+perspective, the robot does not replace the teacher, on the contrary. It plays a
+different role in the classroom, which happen to be novel as well: the robot is
+the \emph{least} performing student, and still a very patient, always eager to
+improve, one.
 
 The importance of the adult is further supported by our experiments: even with
 an autonomous, nominally performing robot, to put the teacher's clothes on
 remains (expectedly) difficult for 5-6 years old children, and during the
 experiments we conducted, the adult always played a key role at prompting the
-child to give feedback to the robot or to go to the next letter or word.  At a
+child to give feedback to the robot or to move to the next letter or word.  At a
 higher orchestration level (and as reported in the two case studies with Vincent
-and Thomas), the educational scenarios were also always designed and monitored by
-the adults.
+and Thomas), the educational scenarios were also always designed and monitored
+by the adults.
 
-We initially envisioned the CoWriter system to be run in the back of a
-classroom with one child: this would have allowed an individual, face-to-face
-remediation approach, not otherwise tractable for a teacher with 20 pupils.
-This is unlikely to happen. In our experience, the teacher keeps such an
-important role that the interaction and the learning would hardly occur if the
-child is left alone (or even semi-alone). At the end, we can reassure teachers:
-robots are not going to replace them any time soon.
+We initially envisioned our system to be run in the back of a classroom with one
+child: this would have allowed an individual, face-to-face remediation approach,
+not otherwise tractable for a teacher with 20 pupils.  This is however unlikely
+to happen soon. In our experience, the teacher keeps such an important role that
+the interaction (and the learning!) would hardly occur if the child is left
+alone (or even semi-alone). We can therefore reassure teachers: robots are not
+going to replace them any time soon.
 
-Beyond handwriting, we believe that this work provides a novel perspective on
-the role for robots in the field of education. \emph{Learning by teaching} is a
-powerful paradigm because of not only its pedagogical efficacy, but its
-potential to positively impact the child's motivation and self-esteem. We hope that 
-this article shows that this is a very relevant context of use for robots. Indeed,
-when facing a child with school difficulties, robots can play the role of a na\"ive 
-learner which neither adults nor peers -- because of the social effects it would 
-induce -- can convincingly play.
+Beyond handwriting, we however do believe that this work provides a novel
+perspective on the role for robots in the field of education. \emph{Learning by
+teaching} is a powerful paradigm because of not only its pedagogical efficacy,
+but its potential to positively impact the child's motivation and self-esteem.
+We hope that this article shows that this is a very relevant context of use for
+robots: when facing a child with school difficulties, robots can play the role
+of a na\"ive learner which neither adults nor peers -- because of the social
+effects it would induce -- can convincingly play.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
