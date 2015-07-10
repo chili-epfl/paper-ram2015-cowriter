@@ -59,7 +59,7 @@ Thomas is five and an half, and has been diagnosed with visuo-constructive
 deficits. He is under the care of an occupational therapist, and tries to
 workaround his inability to draw letters in a consistent manner. Vincent is six
 and struggles at school with his poor handwriting and even poorer
-self-confidence.
+self-confidence.\footnote{Children's names have been changed.}
 
 While Thomas is lively and always quick at shifting his attention from one
 activity to another, Vincent is shy and poised. Two very different children,
@@ -300,7 +300,7 @@ that:
     \subfigure[Nine allographs of the cursive ``h'', next to the reference]{
         \includegraphics[width=0.4\columnwidth]{h}
     }
-    \subfigure[Same samples, normalized and projected in the eigen space spanned from the
+    \subfigure[Same samples, normalized and projected in the eigenspace spanned from the
         3 first eigenvectors: clusters arise, that actually match writing styles.]{
         \includegraphics[width=0.4\columnwidth]{eigenspace-uniformization}
     }
@@ -621,105 +621,108 @@ self-esteem.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Case Study 2: Thomas}
 
-\subsubsection{Context, Study Design}
+\paragraph{Context, Study Design}
 
-This study focused technical adaptations of the CoWriter activity for a
-child diagnosed with real writing deficits.\\ 
+The second long-term study was designed with the help of an occupational therapist in
+Geneva and aimed at deploying the system for the first time on a real
+therapeutic case.
 
-Thomas is a six years old child. It is under the care of an occupational
-therapist. According to the therapist, he shows visuo-constructive deficits.
-As an effect in writing activities, he was frequently performing random attempts and then was comparing
-with the provided template. What is more, Thomas is strongly careless : he rarely payed attention to
-advices, even to what he was doing when he was currently drawing, and he was
-quickly shifting his attention from one
-activity to another.\\
+Thomas is a 5.5 years old child, under the care of an occupational therapist. He
+has been diagnosed with visuo-constructive deficits, which translate into
+difficulties for him to consistently draw letters. Besides, focusing on a task
+is difficult for Thomas, who tends to rapidly shift his attention to something
+else. Since the robot's learning algorithm requires repeated demonstrations of
+similarly shaped letters to converge, the occupational therapist was especially
+interested in observing if the robot would induce a strong enough motivation for
+Thomas to focus on producing regular, consistent letters, thus overcoming his
+deficit.
 
-Our objective is to investigate small modifications of the activity adapted to
-the troubles of Thomas (visuo-constructive deficits and inattention) in order to
-sustain him focused
-on the activity during forty-minutes session, and to make the robot
-evidently learning from his demonstrations.\\
-
-The experiment took place in the therapist's office. It was divided in four
-sessions. This time, we assumed that a scenario like the one we used for Vincent was
-no longer relevant with Thomas. We just introduced the robot and quickly
-said that it was seeking help to train for a robot handwriting contest.\\
-
-Before the experiment, Thomas was working on writing numbers with the therapist.
-Hence we decided to turn the CoWriter activity to teach numbers to the robot. Build on
-existing iPad applications actually used by occupational therapists (Dawson Toth's \emph{ABC's
-Writer}), we designed an Android application for pre-test and post-test. It consisted in drawing
-numbers following an helping pattern, that becomes more fine with levels in
-order to increase difficulty~\ref{fig:abc-writer}.\\
-
-Since Thomas was frequently drawing horizontally-inverted numbers, or even
-unrecognizable allographs, the learning algorithm of the robot was converging to
-meaningless scrawls. To fix this problem, we programmed the robot to refuse allographs that
-were too distant to a reference with a threshold we arbitrary fixed. In that way,
-the child was forced to take care on what he was providing to the robot as
-demonstration. Also, to make sure the robot was going to improve its handwriting
-and to clearly show this improvement, we decided to make it starting
-from scratch : for all numbers, the first try of the robot resulted in
-a simple vertical stroke (see the first robot's try
-in~\ref{learning_6_demos}).\\
-
-In this setup, we added a second tablet with one button per numbers. It was used
-by the child to chose a new number to teach to the robot. It also provided the
-possiblity to enter letters or words, and to switch to another activity (the
-robot telling a story).
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.9\linewidth]{abc-writer}
-    \caption{\small Screenshot of the Android application developed to be used as
-    pre-test and post-test: the child must follow with his finger the path of
-the letter or number. We count the number of times the finger goes outside of
-the red-bordered area.}
-    \label{fig:abc-writer}
-\end{figure}
-
-
-\subsubsection{Results}
-
-
-Despite his inattention, Thomas was able to keep on the activity during more than
-forty minutes in each session. In total, 55 allographs out of 82 
-provided by the child as demonstration were acceptable by the robot (with a
-progressive improvement from 13 out of 28 in the first session up to 26 out
-of 29 in the last session).\\
-
-As soon as Thomas understood that the robot was only accepting recognizable
-allographs, he started to take care on the allographs he was providing to it. He used the
-clearing button to retry when he judged that his numbers where not going to be
-accepted by the robot. According to the therapist, it was the first time Thomas
-was intrinsically correcting himself.\\
-
-Since the robot was learning from scratch, each time Thomas succeeded to make his
-demonstrations accepted by it, the improvement of its handwriting was
-visible~\ref{learning_6_demos},~\ref{henry_distances}.
-Therefor, Thomas quickly entered in an self-rewarding game where the rewards were
-the improvements of the robot, that enhanced his attention. 
+The experiment took place at the therapist's surgery (four sessions spanning
+over 5 weeks). Contrary to Vincent's experiment, we chose not to introduce any
+storyline beyond a simple prompt (``the robot wants to participate to a robotic
+handwriting contest, will you help him to prepare?''), only provided during the
+first session. Hence, we also tested during this case-study if the robot (and
+the Prot\'eg\'e effect) would induce a strong enough intrinsic motivation to
+keep the child engage over the five weeks.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.9\linewidth]{learning_6_demos}
-    \caption{\small Thomas's demonstrations for the number ``6'' (top row) and
-        corresponding shapes generated by the robot. After eight demonstrations,
-        Thomas decided that the robot's ``6'' was good enough, and went to
-    another character: in that respect, he was the one leading the learning
-process of the robot.}
+    \caption{\small Thomas' demonstrations for the number ``6'' (top row) and
+        the corresponding shapes generated by the robot (bottom row). After
+        eight demonstrations, Thomas decided that the robot's ``6'' was good enough,
+        and went to another character. In that regard, he was the one
+        responsible for the learning process of the robot.}
+
     \label{learning_6_demos}
 \end{figure}
 
 
+The occupational therapist had recently carried activities with Thomas about
+writing numbers, so we decided with her to focus on these as well: Thomas would
+use a secondary tablet to tell the robot what number to write, and would then
+correct the robot's attempts like in the other experiments.
+Figure~\ref{learning_6_demos} shows the attempts/corrections cycles that
+occurred during one of the session, on the number ``6''.
+
+%Before the experiment, Thomas was working on writing numbers with the therapist.
+%Hence we decided to turn the CoWriter activity to teach numbers to the robot.
+%Build on existing iPad applications actually used by occupational therapists
+%(Dawson Toth's \emph{ABC's Writer}), we designed an Android application for
+%pre-test and post-test. It consisted in drawing numbers following an helping
+%pattern, that becomes more fine with levels in order to increase
+%difficulty~\ref{fig:abc-writer}.
+
+Since Thomas would frequently draw mirrored numbers, or hard-to-recognize
+shapes, the learning algorithm of the robot tended to converge towards
+meaningless scribblings. We addressed this issue by having the robot to
+\emph{refuse} allographs that were too far from the reference shape (\emph{``I'm
+not sure to understand what you are drawing...''}), so that the child had to
+pay good attention to what he would demonstrate to the robot. Also, to make
+the robot's progresses evident, we modified the initialization step of the
+learning algorithm to start with a roughly vertical stroke instead of a
+deformed number (round 0 on Figure~\ref{learning_6_demos}).
+
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.9\linewidth]{abc-writer}
+%    \caption{\small Screenshot of the Android application developed to be used as
+%    pre-test and post-test: the child must follow with his finger the path of
+%the letter or number. We count the number of times the finger goes outside of
+%the red-bordered area.}
+%    \label{fig:abc-writer}
+%\end{figure}
+%
+
+\paragraph{Results}
+
+Despite his attention deficit, Thomas was able to conduct the activity during
+more than forty minutes in each session. In total, 55 allographs out of the 82
+shapes demonstrated by the child were accepted by the robot (with a progressive
+improvement from 13 out of 28 in the first session up to 26 out of 29 in the
+last session).
+
+As soon as Thomas understood that the robot was only accepting well-formed
+allographs, he started to focus on it and he would typically draw 5 or 6 times
+the number before actually sending to the robot (the tablet let the children
+clear their drawing and try again before sending it to the robot). According to
+the therapist, it was the first time that Thomas would correct himself in such a
+way, explicitly having to reflect on how \emph{another agent} (the robot) would
+interpret and understand his writing.
+
+Since the robot's handwriting started from a simple primitive (a stroke), each
+time Thomas succeeded to have his demonstration accepted by it, the robot's
+improvement was clearly visible (as measured in Figure~\ref{henry_distances}).
+This led to a self-rewarding situation that effectively supported Thomas'
+engagement.
+
 \begin{figure}
     \centering
     \includegraphics[width=0.9\linewidth]{learning_6_distances}
-    \caption{\small Two metrics to assess the handwriting progresses: Euclidian
-    distance in the eigenspace of the number dataset (top figure) or in
-cartesian space (bottom figure). Green lines represent the robot performance,
-blue lines Thomas's performance. The round IDs correspond to the demonstrations
-pictured on Figure~\ref{henry_demos}.}
+    \caption{\small \textbf{Assessing handwriting progress}: Euclidian
+    distance in the eigenspace of the number ``6''. Green lines represent the robot performance,
+    blue lines Thomas's performance. The round IDs ($x$-axis) correspond to the demonstrations
+pictured on Figure~\ref{learning_6_demos}.}
     \label{henry_distances}
 \end{figure}
 
