@@ -87,7 +87,7 @@ consequently, improving his/her performance at school.
 We present in this article a new take on this educative challenge, as a
 remediation procedure that involve a ``bad writer'' robot that is \emph{taught}
 by the child: by building on the \emph{learning by teaching} paradigm, not only
-the child practises hand-writing but, as (s)he takes on the role of the teacher,
+the child practises handwriting but, as (s)he takes on the role of the teacher,
 (s)he also positively reinforce his/her self-esteem and motivation: his/her
 social role shifts from the ``underperformer'' to ``the one who knows and
 teaches''.
@@ -530,69 +530,58 @@ group aims at assessing such engagement levels in real-time, so that the robot
 can address possible disengagement (by changing/adapting its physical behaviour,
 by switching to different activities, etc.)
 
-Further qualitative assessment of engagement over longer interactions were
-conducted during the case studies, as reported in the following section.
+We also performed further qualitative assessment of engagement over longer
+interaction periods: two 4-weeks long case studies with one child at a time have
+been conducted so far, the first one (\emph{Vincent}) focusing on
+\emph{engagement on the long run}, the second one (\emph{Thomas}) looking at
+\emph{acceptance and impact in a real therapeutic context}.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Case Study 1: Vincent}
 
 \subsubsection{Context, Study Design}
-The CoWriter activity needs a child engaged as interaction leader. In this
-study we consider the problem of long-term interactions : is it possible to sustain this
-engagement over several one-hour sessions ?\\
 
-Vincent is a six years old child with troubles in handwriting and a poor
-self-esteem. Our goal was to figure out an environment in
-order to make Vincent sustaining engagement over four sessions of one hour, one
-session per week. We decided to introduce an appealing scenario that justifyed to the child
-the activity where a robot wants to learn handwriting. We used two Nao robots :
-a blue one (called Mimi) and an orange one (called Clem). Mimi was away for a
-mission,and the two robots had to communicate by mails. But they decided to do
-it ``like humans", with handwritten messages. While Mimi was a good in
-handwriting, Clem had strong difficulties and needed the help of Vincent.\\
-
-During the first session, Vincent just teached single letters to the robot.
-To chose a letter, he had to pick it in a set of magneted plastic letters, and to
-show it to the robot. But the robot was not programmed to detect and recognize
-it. A third person was entering the letter and was sending it to the
-system with the computer. With following sessions we gradually increased the
-difficulty : in the second session the child teached full words. To chose the
-word, he had to assemble plastic letters to build it and to show it to the
-robot. In the two last sessions, he teached long sentences. This time he just
-had to say the sentence to the robot, and then the third person was using the
-compurter to enter it. \\
-
-We designed a special scenario for the last session : Mimi came back to the
-laboratory. In front of Vincent, Mimi said to Clem that it did not believe 
-it realy improved its handwritting, and that the responses it recieved
-was written by Vincent. To prove that it actualy improved its writing,
-it gave to Clem thirty minutes for a final training. After the training, it
-asked to Clem to write some words. Finally, he admitted that Clem actually
-improved its handwriting.
+During this first case study, we invited and followed Vincent, a six years old
+child, once per week over a period of a month. Our primary aim was to address the
+question of whether we can sustain Vincent's engagement and commitment to the
+writing activity over such a period.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.5\linewidth]{diego}
-    \caption{\small Vincent working with Nao}
+    \caption{\small Vincent correcting {\sc nao}'s attempt by rewriting the
+        whole word. Empty boxes are drawn on the screen to serve as template for the child
+        and to make word segmentation more robust.}
     \label{fig:diego}
 \end{figure}
 
+The study took place at our laboratory (Figure~\ref{fig:diego}), and we chose to
+design the activity around a storyline meant to be attractive for a 6 years old
+boy: one of our {\sc nao} was away for a mysterious scientific mission, and it
+needed the support of another one -- which stayed at the lab -- to interpret
+curious pictures that were sent every week. Vincent had to help the second robot
+understanding the pictures, and since the two robots had somehow beforehand
+agreed to communicate with ``letters written like humans'' (\ie handwritten),
+Vincent also had to help the robot to write good looking letters (because, well,
+this robot was terrible at writing!) The experimental setup was similar to
+Figure~\ref{experimental_setup}, except that Vincent had to tell the robot what
+to write with small plastic letters (visible behind the robot on Figure~\ref{fig:diego}).
+
+To complement the intrinsic motivation of helping a robot to communicate with another one, we
+gradually increased the complexity of Vincent's task to keep it challenging and
+interesting (the first week: demonstration of single letters; the second week:
+short words; the third week: a full letter -- Figure~\ref{fig:stimuli}).
+
+The last session was set as a test: the ``explorer'' robot
+had come back from its mission and it actually challenged the other robot in
+front of Vincent: \emph{``I don't believe you wrote yourself these nice letters that I
+received! Prove it to me by writing something in front of me!''} This situation
+was meant to evidence the Prot\'eg\'e effect: by judging the other robot's
+handwriting, the ``explorer'' robot would implicitly judge Vincent's skills as
+teacher, and in turn, Vincent's handwriting.
 
 \subsubsection{Results}
-In all sessions, Vincent was focused on the activity during forty minutes up to
-one hour. In total, he provided 154 letters as demonstration.\\
-
-Vincent accepted our scenario and seriously played the game. At the
-beginning he seemed not confident and intimidated.  But quickly, he gain in
-confidence to play with the robot. He even showed real affective bonds : he
-sent an handwritten mail to it some days after the last session.\\
-
-As a technical result, we do not know if Vincent improved his handwriting but he
-likely conviced himself he was good enough at writing to help someone else (the
-robot in that case). To show to Vincent how much he improved the robot's
-handwriting, we printed the letter that the robot wrote during the third session
-before and after his help (Fig.~\ref{fig:stimuli}).
-
 
 \begin{figure}
     \centering
@@ -603,21 +592,37 @@ before and after his help (Fig.~\ref{fig:stimuli}).
         \includegraphics[height=6cm]{diego-final-letter}
     }
 
-    \caption{\small Text generated by the robot, before and after training with
-        the child (in French). As an example, the red box emphasizes the changes on the word
-    ``envoyer''.}
+    \caption{\small (French) text generated by the robot, before and after a one
+        hour long interaction session with the child. As an example, the red box
+        highlights the changes on the word ``envoyer''.}
+
     \label{fig:stimuli}
 \end{figure}
+
+Overall, Vincent provided 154 demonstrations to the robot, and he remained
+actively engaged over the four weeks. The story was well accepted by Vincent and
+he seriously engaged into the game. After the first week, he showed good
+confidence to play with the robot and he built affective bonds with the robot
+over the course of the study, as evidenced by some cries on the last session,
+and several letters sent by him to the robot \emph{after} the end of the study
+(one of them 4 months later) to get news. This represents a promising initial
+result: we can effectively keep a child engaged with the robot for a relatively
+long period of time (about 5 hours).
+
+No conclusion can be drawn in terms of actual handwriting remediation: we did
+not design this study to formally assess possible improvements.
+
+However, as pictured on Figure~\ref{fig:stimuli}, Vincent was able to
+significantly improve the robot's skill, and he acknowledged that he had been
+able to help the robot: in that regard, Vincent convinced himself that he was
+``good enough'' at writing to help someone else, and this is likely to have
+positively impacted his self-esteem.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Case Study 2: Thomas}
 
 \subsubsection{Context, Study Design}
-
-
-
-
 
 This study focused technical adaptations of the CoWriter activity for a
 child diagnosed with real writing deficits.\\ 
@@ -744,7 +749,7 @@ robots at several levels. We show that:
 
     \item this proves essential to \textbf{sustain a long-term interaction} (several
         hours) around a fundamentally routine -- yet challenging -- educational
-        task (hand-writing learning),
+        task (handwriting learning),
 
     \item besides, the social commitment induces a \textbf{cognitive engagement}
         of the child with the robot which is \textbf{a key learning lever} as
