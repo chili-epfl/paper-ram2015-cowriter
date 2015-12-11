@@ -409,10 +409,12 @@ project is available online\footnote{The primary repository is
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Field Studies}
 
-To date, the system has been deployed and tested in three different
-schools (totalling child-robot interactions with more than 70 children, aged 5
-to 8) and we also conducted 2 case studies that lasted several weeks.
-Table~\ref{studies} gives an overview of these studies.
+The system has been deployed and tested in several situations: in three
+different schools (resulting in relatively short child-robot interactions with
+more than 70 children, aged 5 to 8), in the surgery of an occupational
+therapist (with 8 children, each interacting several hours with the system),
+and for two case studies that each lasted several weeks. Table~\ref{studies}
+gives an overview of these studies.
 
 \begin{table}[ht!]
 \centering
@@ -427,12 +429,13 @@ Table~\ref{studies} gives an overview of these studies.
 {\it Vincent}     & Case-study, spanning over 4 weeks              & 1.5h $\times$ 4 weeks & 1                                     & 6          \\
 {\it Haut-Lac}  & Pair interaction at school & 26 min/group                            & 7 $\times$ 2                          & 5-6        \\
 {\it ISG 2}     & Individual interaction at school              & 18 min                            & 6                                     & 5-6        \\
-{\it Thomas}     & Case-study, spanning over 4 weeks              & 1h $\times$ 4 weeks        & 1                                     & 5          \\ \bottomrule
+{\it Thomas}     & Case-study, spanning over 4 weeks              & 1h $\times$ 4 weeks        & 1                                     & 5          \\
+{\it Normandie}     & Individual interactions at surgery               & 1h $\times$ 3 sessions & 8                                     & 6-8          \\ \bottomrule
 \end{tabular}
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Studies at School}
+\subsection{System Validation at Schools}
 
 Over the two years of the project, we conducted four studies in schools
 (Figure~\ref{fig:schools}). These experiments were meant to technically validate
@@ -538,6 +541,129 @@ been conducted so far, the first one (\emph{Vincent}) focusing on
 \emph{engagement on the long run}, the second one (\emph{Thomas}) looking at
 \emph{acceptance and impact in a real therapeutic context}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Study: How Children Take on the Role of a Teacher}\label{normandie}
+
+\paragraph{Context, Study Design}
+
+\begin{inparaenum}
+This experiment was conducted to study \item how easily children with actual
+deficit take on the role of a teacher, and \item if they engage \emph{seriously}
+in this role.
+\end{inparaenum}
+
+The experiment took place at the surgery of an occupational therapist in
+Normandy, France. Eight children participated, all showing troubles with
+handwriting acquisition: Valentine (7 years old), Alexandre (6.5) and Jonathan
+(7) are under the care of the occupational therapist. Enzo (8) and Matenzo (7)
+are repeating their school year because of writing difficulties. Mona (6) and
+Adele (8) are both ranked at the bottom of their respective classes in writing
+activities. Nathan (7) is under the care of a neurologist, and has been
+diagnosed with specific language impairment. Given their school level, all those
+children would be expected to know how to correctly shape cursive letters. 
+
+Over a period of two weeks, each child attended three time a one hour long
+session, except for Adele and Mona who only attended one session. The
+experimenter role was limited to the explaination of the rules of the game and
+the basic tablet usage. For this experiment, the children were provided with two
+tablets: one to choose the word (or single letter) to teach to the robot, one
+used to write. We also provided templates of the cursive letters, where the
+children to ask for.
+
+We only provided the children with minimal explanations on the task (they would
+have to help the robot to improve its writing style), so as to assess if and how
+children would naturally take on the role of the teacher, and how seriously they
+engaged into helping the robot.
+
+This assessment was carried through two additional buttons on the tablet: a
+green ``thumbs up'' and a red ``thumbs down''. The children were told to use
+them to evaluate the robot's improvements (``thumb up'' being a way to give
+positive feedback while ``thumb down'' would be convey negative feedback). Our
+assessment builds on the hypothesis that the more the child provides feedback to
+the robot with the green/red buttons, the more he/she assumes the role of a
+teacher. Then, by correlating the feedback with the actual performance of the
+robot, we can measure to what extend the child was seriously assuming his/her
+role: since the child knows what a correct letter should look like, if his/her
+feedback does not correlate with the actual performance, the child was likely
+engaged into a playful instead of serious role-playing.
+
+
+\paragraph{Results}
+
+All children maintained their engagement during the whole sessions. They
+provided on average 42 demonstrations per session. All children used the
+feedback buttons and had preference to give positive feedback the robot (99
+``thumb up'' \vs 33 ``thumb down'' were recorded). 
+
+As the children participated at most 3 hours of interactions spanning over two
+week, we did not attempted to measure possible handwriting improvements by the
+children, and instead we focused on the possible correlation between the
+children's feedback and the robot's progression.  We estimated the robot's
+progression as the difference between a starting score (score of the first
+robot's try when children have chosen a new word/letter to work on) and the
+current robot's score (after being taught by the child). The score is calculated
+as the average of euclidean distance between robot's try and a reference
+allograph over all letters of the word. Those references for letter allographs
+where drawn by us beforehand, taking inspiration in education.com cursive
+letters
+template\footnote{\url{http://www.education.com/slideshow/cursive-handwriting-z/}}.
+Let $P_i$ be the estimated progression of the robot at time $ i$. Of course, if
+the child chose to switch to a new word at time $ j$ , we have $ P_{j}=0$ and
+clearly $ P_0=0$.  To measure whether the fact that the child was rewarding the
+robot when it was progressing was significant or not, we generated 10000 times
+the same number of reward/punishment but accorded at random times. Let $ R_i^n$
+be the $n^{th}$ generated evaluation at time $ i$ ($ R_i^n = 0$ if no evaluation
+occurred at time $ i$ , $ R_i^n=1$ if a reward occurred at time $i$ and
+$R_i^n=-1$ if a punishment occurred at time $i$), and $\overline{R}_i$ be the
+actual evaluation at time $i$. For each $n^{th}$ generated sequence of
+evaluation, we compute a score of evaluation: $$ S^n = \sum\limits_i{R_i^n
+P_i}$$ Then we can estimate the p-value $p$ of the actual score: $$ \overline{S}
+= \sum\limits_i{\overline{R}_i P_i}$$ given the distribution of the generated
+scores $\left(S^n\right)_n$, which is assumed to be Gaussian: 
+
+$$
+p(\overline{S})= \mathbb{P}{\left[X>\overline{S}\right]} = 1-\phi{\left(\frac{\overline{S}-\mu}{\sigma}\right)}
+$$
+
+where $\phi$ denotes the cumulative distribution function of the standard normal
+distribution, $\mu$ the mean and $\sigma$ the deviation of the generated scores
+$\left(S^n\right)_n$.  As a result, we found that 5 of the 8 children obtained a
+score of evaluation significantly hight ($p(\overline{S})<0.05$). Score of
+evaluation p-values of each child is reported in the second-to-last column of
+Table~\ref{table:scores}.
+
+We also studied correlation between children's evaluations and their own
+progression. The analysis was conducted in the same way, using distances between
+children demonstrations and reference allographs to compute children
+progressions.  3 of 5 children that played ``seriously" obtained score of
+evaluation of their own progression significantly high (last column of
+Table~\ref{table:scores}). For those children, it seems that the robot was
+reflecting their own performances, and while they were judging the robot
+positively (three times more rewards than punishments) they were actually
+evaluating themselves.
+
+\begin{table}
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        Child & demo & rew & pun & p(robot) & p(child)\\ \hline
+        Valentine & 127 & 24 & 6 & 2.4e-03 & 5.5e-02\\ \hline
+        Enzo & 223 & 20 & 9 & 1.7e-01 & 3.5e-01\\ \hline
+        Matenzo & 131 & 10 & 3 & 3.8e-03 & 7.9e-03\\ \hline
+        Jonathan & 98 & 10 & 5 &  1.5e-01 & 3.8e-01\\ \hline
+        Nathan & 115 & 16 & 4 & 5.3e-04 & 2.7e-03\\ \hline
+        Alexandre & 83 & 10 & 3 & 3.1e-02 & 6.0e-01\\ \hline
+        Adele & 35 & 4 & 2 & 5.0e-02 & 3.7e-02\\ \hline
+        Mona & 40 & 5 & 1 &  5.4e-01 & 2.0e-01\\ \hline
+    \end{tabular}
+    \caption{\small Results of evaluations. demo: number of demonstrations provided by
+        the child over all session. rew: number of rewards accorded by
+        the child. pun: number of punishments. p(robot): are the evaluations
+        significantly corresponding to the progression of the robot ? p(child): are the
+        evaluations significantly corresponding to the child's own
+progression ?}
+    \label{table:scores}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Case Study 1: Vincent}
@@ -731,14 +857,11 @@ pictured on Figure~\ref{Thomas_demos}.}
 
 \begin{figure}
     \centering
-    \subfigure[number 1]{
-        \includegraphics[width=6cm]{henry1}
+    \subfigure[Number ``2'']{
+        \includegraphics[width=0.45\linewidth]{henry2}
     }
-    \subfigure[number 2]{
-        \includegraphics[width=6cm]{henry2}
-    }
-	\subfigure[number 5]{
-        \includegraphics[width=6cm]{henry5}
+	\subfigure[Number ``5'']{
+        \includegraphics[width=0.45\linewidth]{henry5}
     }
     \caption{\small Improvement of Thomas demonstrations for some numbers: a) drawing the allograph of the number 1, b) the number 2 and c) the number 5. Thomas progressively took care of the demonstrations he was providing to the robot for those numbers. We used for this figure the same metric than the one used for the acceptance algorithm. Distances are normalized with respect to the biggest value. The dashed line correspond to the threshold of robot's acceptance.}
 
@@ -746,131 +869,6 @@ pictured on Figure~\ref{Thomas_demos}.}
 \end{figure}
 
 
-\section{Case study 3: when children evaluate the robot}\label{auto}
-
-\subsection{Context}
-
-Each of previous studies was adapted to individual subjects : we used a special
-design for each case in order to sustain the child's engagement.
-In our next experiment, we conducted case studies with eight children using a single
-design. Those children have in common difficulties to learn
-cursive writing but the natures and intensities of those troubles are radically
-different from one child to another. Valentine (7 years old), Alexandre (6.5) and
-Jonathan (7) are under the care of an
-occupational therapist. Enzo (8) and Matenzo (7) are repeating their school year
-because of writing. Mona (6) and Adele (8) are bottom of their respective
-classes in writing activities. Nathan (7) is under the care of a neurologist, and
-has been diagnosed with specific language impairment. All of those children are
-expected, given their school level, to know the allographs of
-cursive letters. 
-
-\subsection{Questions}
-
-The main purpose of this study is to test the ergonomic aspects of CoWriter. When introducing the robot, we did not
-provide scenario and gave to children minimal explanations. We then observed how easily children assumed the role of the teacher and how seriously they tried to help the robot.
-
-\subsection{Experimental settings}
-
-This experiment took place in the coffee room of a therapists shared surgery
-in Normandy, France. Over two weeks, each child came three time for one-hour
-session, except Adele and Mona who did just one session. A facilitator was present to explain the rules of the game and tablet usage. As in the previous experiment, children were provided with two tablets : one to choose a word (or a single letter) to teach, and one
-used by both the child and the robot to write. We also provided the allograph's template if the child asked for. 
-
-The starting point of the robot's writing was the same for all children: we
-used middle point between simple vertical strokes and letters. For this study,
-we wanted the robot to be only influenced by the demonstrations provided by the
-child, so we did not project allographs in a subspace. The new generated
-sample by the robot were calculated as the middle way between demonstration and
-last state in Cartesian space. 
-
-The robot was programmed to accept all demonstrations, giving to the child the
-full responsibility of the teacher.
-
-We added two buttons on the tablet  interface: a green one with a ``thumbs up", and
-a red one with a ``thumbs down". Those buttons could be used by children to evaluate the
-robot (the green one was for rewards while the red one was for punishment). This
-way, we could measure the perception of the robot by the child: the more the
-child used evaluation buttons, the more he was playing the teacher, judging the
-robot instead of himself. It became possible to estimate if a child is playing
-seriously given correlation between his evaluation and robot's actual
-progression.
-
-
-\subsection{Results}
-
-All children maintained their engagement during the whole sessions. They
-provided on average 42 demonstrations per session. All children used evaluation
-buttons and had preference to reward the robot (in total, 99 rewards and 33
-punishments were recorded). 
-
-Since sessions took place over only two weeks, we did not studied possible
-handwriting remediation in children, but we focused on correlation between the
-children's evaluations and the robot's progression.  We estimated the robot's
-progression as the difference between a starting score (score of the first
-robot's try when children have chosen a new word/letter to work on) and the
-current robot's score (after being taught by the child). The score is calculated
-as the average of euclidean distance between robot's try and a reference
-allograph over all letters of the word. Those references for letter allographs
-where drawn by us beforehand, taking inspiration in education.com cursive
-letters
-template\footnote{\url{http://www.education.com/slideshow/cursive-handwriting-z/}}.
-Let $P_i$ be the estimated progression of the robot at time $ i$. Of course, if
-the child chose to switch to a new word at time $ j$ , we have $ P_{j}=0$ and
-clearly $ P_0=0$.  To measure whether the fact that the child was rewarding the
-robot when it was progressing was significant or not, we generated 10000 times
-the same number of reward/punishment but accorded at random times. Let $ R_i^n$
-be the $n^{th}$ generated evaluation at time $ i$ ($ R_i^n = 0$ if no evaluation
-occurred at time $ i$ , $ R_i^n=1$ if a reward occurred at time $i$ and
-$R_i^n=-1$ if a punishment occurred at time $i$), and $\overline{R}_i$ be the
-actual evaluation at time $i$. For each $n^{th}$ generated sequence of
-evaluation, we compute a score of evaluation: $$ S^n = \sum\limits_i{R_i^n
-P_i}$$ Then we can estimate the p-value $p$ of the actual score: $$ \overline{S}
-= \sum\limits_i{\overline{R}_i P_i}$$ given the distribution of the generated
-scores $\left(S^n\right)_n$, which is assumed to be Gaussian: 
-
-$$
-p(\overline{S})= \mathbb{P}{\left[X>\overline{S}\right]} = 1-\phi{\left(\frac{\overline{S}-\mu}{\sigma}\right)}
-$$
-
-where $\phi$ denotes the cumulative distribution function of the standard normal
-distribution, $\mu$ the mean and $\sigma$ the deviation of the generated scores
-$\left(S^n\right)_n$.  As a result, we found that 5 of the 8 children obtained a
-score of evaluation significantly hight ($p(\overline{S})<0.05$). Score of
-evaluation p-values of each child is reported in the second-to-last column of
-Table~\ref{table:scores}.
-
-We also studied correlation between children's evaluations and their own
-progression. The analysis was conducted in the same way, using distances between
-children demonstrations and reference allographs to compute children
-progressions.  3 of 5 children that played ``seriously" obtained score of
-evaluation of their own progression significantly high (last column of
-Table~\ref{table:scores}). For those children, it seems that the robot was
-reflecting their own performances, and while they were judging the robot
-positively (three times more rewards than punishments) they were actually
-evaluating themselves.
-
-\begin{table}
-    \centering
-    \begin{tabular}{|c|c|c|c|c|c|}
-        \hline
-        Child & demo & rew & pun & p(robot) & p(child)\\ \hline
-        Valentine & 127 & 24 & 6 & 2.4e-03 & 5.5e-02\\ \hline
-        Enzo & 223 & 20 & 9 & 1.7e-01 & 3.5e-01\\ \hline
-        Matenzo & 131 & 10 & 3 & 3.8e-03 & 7.9e-03\\ \hline
-        Jonathan & 98 & 10 & 5 &  1.5e-01 & 3.8e-01\\ \hline
-        Nathan & 115 & 16 & 4 & 5.3e-04 & 2.7e-03\\ \hline
-        Alexandre & 83 & 10 & 3 & 3.1e-02 & 6.0e-01\\ \hline
-        Adele & 35 & 4 & 2 & 5.0e-02 & 3.7e-02\\ \hline
-        Mona & 40 & 5 & 1 &  5.4e-01 & 2.0e-01\\ \hline
-    \end{tabular}
-    \caption{\small Results of evaluations. demo: number of demonstrations provided by
-        the child over all session. rew: number of rewards accorded by
-        the child. pun: number of punishments. p(robot): are the evaluations
-        significantly corresponding to the progression of the robot ? p(child): are the
-        evaluations significantly corresponding to the child's own
-progression ?}
-    \label{table:scores}
-\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
