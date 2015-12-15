@@ -433,7 +433,7 @@ gives an overview of these studies.
 {\it School A (1)} & Unstructured group interaction at school & 16 min/group           & 4 $\times$ 8 children                 & 6-7        \\
 {\it School B}     & Individual/Pair interaction at school    & 11 min/group           & 7 (individual) + 7 $\times$ 2 (pairs) & 7-8        \\
 {\it School C}     & Pair interaction at school               & 26 min/group           & 7 $\times$ 2                          & 5-6        \\
-{\it School A (2)} & Individual interaction at school         & 18 min                 & 6                                     & 5-6        \\ \midrule
+{\it School A (2)} & Individual interaction at school         & 20 min                 & 6                                     & 5-6        \\ \midrule
 {\it Surgery}      & Individual interaction at surgery        & 3 sessions $\times$ 1h & 8                                     & 6-8        \\ \midrule 
 {\it Vincent}      & Case-study, spanning over 4 weeks        & 4 weeks $\times$ 1.5h  & 1                                     & 6          \\
 {\it Thomas}       & Case-study, spanning over 4 weeks        & 4 weeks $\times$ 1h    & 1                                     & 5          \\ \bottomrule
@@ -475,7 +475,7 @@ besides required careful organization with the school due to ethical concerns.
 
 From a technical perspective, the system achieves an acceptable level of
 reliability and allow a technically sound autonomous interaction. For instance,
-during the second school study (\textit{Florimont}), the robot withstood
+during the second school study (\textit{School B}), the robot withstood
 interactions which lasted for a total of 160 minutes.  During this time the
 robot wrote 335 letters, 152 of which in response to demonstrations received
 from the 21 children. Technical intervention was only required for the three
@@ -518,38 +518,67 @@ handwriting remediation~\cite{Hoy2011}. This highlights the necessity to sustain
 a child-robot engagement over the long-term if we want to achieve measurable learning gains.
 
 Factually, the children engaged into the teaching activity: in the
-\textit{Florimont} study, for instance, they demonstrated an average of
+\textit{School B} study, for instance, they demonstrated an average of
 10.9 demonstration letters (SD = 4.4) for an average session duration of 11 minutes.
 In 9 out of the 14 sessions (64\%), the robot
 received demonstration letters even \emph{after} reaching the final stage of the
 interaction, suggesting an intrinsic motivation to further engage in the
 interaction.
 
-\begin{figure}[ht!]
+%\begin{figure}[ht!]
+%    \centering
+%    \includegraphics[width=0.9\linewidth]{engagement}
+%    \caption{\small Engagement level of one child, manually annotated by two judges
+%        over a 13 min long interaction (Cronbach’s alpha test: $\alpha = .82$,
+%        good inter-judge agreement). 0 means ``complete disengagement from the
+%        task'', 6 means ``full engagement''. The vertical lines represent activity
+%    switches between handwriting teaching and story-telling (used as a
+%    disturber).}
+%    \label{engagement_level}
+%\end{figure}
+
+\begin{table}[h!]
     \centering
-    \includegraphics[width=0.9\linewidth]{engagement}
-    \caption{\small Engagement level of one child, manually annotated by two judges
-        over a 13 min long interaction (Cronbach’s alpha test: $\alpha = .82$,
-        good inter-judge agreement). 0 means ``complete disengagement from the
-        task'', 6 means ``full engagement''. The vertical lines represent activity
-    switches between handwriting teaching and story-telling (used as a
-    distruber).}
-    \label{engagement_level}
-\end{figure}
+    \caption{\textbf{Levels of with-me-ness}. Percentage of interaction time
+        during which the child was effectively focusing his/her attention on the
+        task. The six children are those from the second study at School A.
+        Interaction duration: M = 19.6 min, SD = 1.58. Results
+        taken from~\cite{lemaignan2016realtime}.}
 
-We also conducted a qualitative assessment of the engagement levels during
-several interaction sessions (studies \textit{Haut-Lac} and \textit{ISG 2}).
-While the overall engagement was high, Figure~\ref{engagement_level} shows an
-example of a child with moderate level of engagement. On-going research in our
-group aims at assessing such engagement levels in real-time, so that the robot
-can address possible disengagement (by changing/adapting its physical behaviour,
-by switching to different activities, etc.)
+    \begin{tabular}{p{1cm}cccccccc}
+        \toprule
+        Child & 1 & 2 & 3 & 4 & 5 & 6 & {\bf M} & {\it SD} \\
+        \midrule
+        $\mathcal{W}$ & 79.4\% & 81.6\%  & 90.5\% & 87.9\% & 90.7\% & 80.9\% & {\bf 85.2\%} & {\it 5.1} \\ 
+        \bottomrule
+    \end{tabular}
+    \label{tab:results-with-me-ness}
+\end{table}
 
-We also performed further qualitative assessment of engagement over longer
-interaction periods: two 4-weeks long case studies with one child at a time have
-been conducted so far, the first one (\emph{Vincent}) focusing on
-\emph{engagement on the long run}, the second one (\emph{Thomas}) looking at
-\emph{acceptance and impact in a real therapeutic context}.
+We also conducted a quantitative assessment of the engagement levels of the
+children. Table~\ref{tab:results-with-me-ness} reports the levels of
+\emph{with-me-ness} of the children during the second study at school A.
+\emph{With-me-ness} is a quantifiable precursor of engagement: it measures the
+percentage of time spent by the child focusing onto the task at end. It was
+first devised in the context of computer-supported
+learning~\cite{sharma2014me}, and we have previously studied its applicability to
+human-robot interaction and formalized the exact methodology
+in~\cite{lemaignan2016realtime}\footnote{Note that with-me-ness is a metric that
+allows real-time computation by the robot itself: while we did not yet make
+use of it, it would allow the robot to detect possible disengagements, and
+eventually address them by adapting its physical behaviour, switching to
+different activities, etc.}.
+
+The average with-me-ness is well above 80\%, and confirms that the children
+where very much engaged into these 20 minutes of interaction with the robot,
+paying close attention to the task.
+
+The other three experiments (the group study at the surgery and the two
+case-studies) provide further qualitative assessment of engagement over longer
+interaction periods. In particular, as reported hereafter, the two 4-weeks long
+case studies that have been conducted so far show that our system can sustain
+children' engagement over durations (5 hours) that are closer to what is
+expected to have an impact in a real therapeutic context.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Study: How Children Take on the Role of a Teacher}\label{normandie}
