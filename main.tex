@@ -574,78 +574,99 @@ where very much engaged into these 20 minutes of interaction with the robot,
 paying close attention to the task.
 
 The other three experiments (the group study at the surgery and the two
-case-studies) provide further qualitative assessment of engagement over longer
+case-studies) provide further qualitative evidence of engagement over longer
 interaction periods. In particular, as reported hereafter, the two 4-weeks long
 case studies that have been conducted so far show that our system can sustain
 children' engagement over durations (5 hours) that are closer to what is
 expected to have an impact in a real therapeutic context.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Study: How Children Take on the Role of a Teacher}\label{normandie}
+\subsection{Surgery Study: How Children Take on the Role of a Teacher}\label{normandie}
 
 \paragraph{Context, Study Design}
 
-\begin{inparaenum}
+\begin{inparaenum}[\itshape 1\upshape)]
 This experiment was conducted to study \item how easily children with actual
 deficit take on the role of a teacher, and \item if they engage \emph{seriously}
-in this role.
+in this role. As such, measuring actual handwriting improvements was not a primary goal
+of this experiment.
 \end{inparaenum}
 
 The experiment took place at the surgery of an occupational therapist in
-Normandy, France. Eight children participated, all showing troubles with
-handwriting acquisition: Valérie (7 years old), Antoine (6.5) and Johan
-(7) are under the care of the occupational therapist. Émilien (8) and Mathieu (7)
-are repeating their school year because of writing difficulties. Mona (6) and
-Adèle (8) are both ranked at the bottom of their respective classes in writing
-activities. Nicolas (7) is under the care of a neurologist, and has been
-diagnosed with specific language impairment. Given their school level, all those
-children would be expected to know how to correctly shape cursive letters. 
+Normandy, France. Eight children participated, selected by the occupational
+therapist based on their age and type of deficit (related to handwriting).
+Valérie (female, 7 years old), Antoine (male, 6.5) and Johan (male, 7) are under
+the care of the occupational therapist. Émilien (male, 8) and Mathieu (male, 7)
+are repeating their school year because of writing difficulties. Marie (female,
+6) and Adèle (female, 8) are both ranked at the bottom of their respective
+classes in writing activities. Nicolas (male, 7) is under the care of a
+neurologist, and has been diagnosed with specific language impairment. Given
+their school level, all those children would be expected to know how to
+correctly shape cursive letters. 
 
 Over a period of two weeks, each child attended three time a one hour long
-session, except for Adele and Mona who only attended one session. The
-experimenter role was limited to the explaination of the rules of the game and
+session (except for Marie and Adèle who only attended one session). The
+experimenter role was limited to the explanation of the rules of the game and
 the basic tablet usage. For this experiment, the children were provided with two
-tablets: one to choose the word (or single letter) to teach to the robot, one
-used to write. We also provided templates of the cursive letters, where the
-children to ask for.
+tablets: one to choose the words (or letters) to teach to the robot, the other one
+to write, like in the previous studies. We also provided templates of the
+cursive letters, where the children to ask for it.
 
 We only provided the children with minimal explanations on the task (they would
 have to help the robot to improve its writing style), so as to assess if and how
 children would naturally take on the role of the teacher, and how seriously they
-engaged into helping the robot.
+engage into helping the robot.
 
-This assessment was carried through two additional buttons on the tablet: a
-green ``thumbs up'' and a red ``thumbs down''. The children were told to use
+This assessment is carried through two additional buttons on the tablet: a
+green ``thumbs up'' and a red ``thumbs down''. The children are told to use
 them to evaluate the robot's improvements (``thumb up'' being a way to give
-positive feedback while ``thumb down'' would be convey negative feedback). Our
-assessment builds on the hypothesis that the more the child provides feedback to
-the robot with the green/red buttons, the more he/she assumes the role of a
+positive feedback while ``thumb down'' would convey negative feedback). Our
+assessment builds on the hypothesis that the more the children provides feedback to
+the robot with the green/red buttons, the more they assume the role of a
 teacher. Then, by correlating the feedback with the actual performance of the
-robot, we can measure to what extend the child was seriously assuming his/her
-role: since the child knows what a correct letter should look like, if his/her
-feedback does not correlate with the actual performance, the child was likely
-engaged into a playful instead of serious role-playing.
+robot, we can measure to what extend the children are seriously assuming their
+role: since the child knows what a correct letter should look like, if their
+feedback does not correlate with the actual performance of the robot, the child
+is likely engaged into a \emph{playful} instead of \emph{serious} role-playing.
 
 
 \paragraph{Results}
 
-All children maintained their engagement during the whole sessions. They
-provided on average 42 demonstrations per session. All children used the
-feedback buttons and had preference to give positive feedback the robot (99
-``thumb up'' \vs 33 ``thumb down'' were recorded). 
+All children maintained their engagement during the entire sessions. They
+provided on average 42 demonstrations per session. All children did use the
+feedback buttons (in total, 99 ``thumb up'' and 33 ``thumb down'' were recorded,
+see Table~\ref{table:scores}). 
 
-As the children participated at most 3 hours of interactions spanning over two
-week, we did not attempted to measure possible handwriting improvements by the
-children, and instead we focused on the possible correlation between the
-children's feedback and the robot's progression.  We estimated the robot's
-progression as the difference between a starting score (score of the first
-robot's try when children have chosen a new word/letter to work on) and the
-current robot's score (after being taught by the child). The score is calculated
-as the average of euclidean distance between robot's try and a reference
-allograph over all letters of the word. Those references for letter allographs
-where drawn by us beforehand, taking inspiration in education.com cursive
-letters
-template\footnote{\url{http://www.education.com/slideshow/cursive-handwriting-z/}}.
+\begin{table}
+    \centering
+    \begin{tabular}{cccccc}
+        \toprule
+        Child          & \# demos & \# positive & \# negative & $p_{robot}$ & $p_{child}$\\ \midrule
+        \emph{Valérie} & 127 & 24 & 6 & $< .003$ \tt ** & $< .055$ \tt .\\ 
+        \emph{Émilien} & 223 & 20 & 9 & $.17$ \it ns & $.35$ \it ns \\
+        \emph{Mathieu} & 131 & 10 & 3 & $< .004$ \tt ** & $< .008$ \tt **\\
+        \emph{Johan}   & 98 & 10 & 5 &  $.15$ \it ns & $.38$ \it ns  \\
+        \emph{Nicolas} & 115 & 16 & 4 & $< .0006$ \tt *** & $< .003$ \tt ** \\
+        \emph{Antoine} & 83 & 10 & 3 & $< .031$ \tt * & $.6$ \it ns \\
+        \emph{Adèle}   & 35 & 4 & 2 & $< .05$ \tt * & $< .04$ \tt * \\
+        \emph{Marie}   & 40 & 5 & 1 &  $.54$ \it ns & $.2$ \it ns \\ \midrule
+        Total          & 852 & 99 & 33 &   & \\ \bottomrule
+    \end{tabular}
+    \caption{\small results of evaluations. demo: number of demonstrations provided by
+        the child over all session. rew: number of rewards accorded by
+        the child. pun: number of punishments. p(robot): are the evaluations
+        significantly corresponding to the progression of the robot ? p(child): are the
+        evaluations significantly corresponding to the child's own
+progression ?}
+    \label{table:scores}
+\end{table}
+
+To study a possible correlation between the children's feedback and the robot's
+improvements, estimated the robot's progress as the difference between an
+initial score (average euclidian distance between the shape drawn by the robot
+at its first attempt and the shape of the reference letter) and the robot's
+score at the current round of demonstrations.
+
 Let $P_i$ be the estimated progression of the robot at time $ i$. Of course, if
 the child chose to switch to a new word at time $ j$ , we have $ P_{j}=0$ and
 clearly $ P_0=0$.  To measure whether the fact that the child was rewarding the
@@ -680,29 +701,6 @@ Table~\ref{table:scores}). For those children, it seems that the robot was
 reflecting their own performances, and while they were judging the robot
 positively (three times more rewards than punishments) they were actually
 evaluating themselves.
-
-\begin{table}
-    \centering
-    \begin{tabular}{|c|c|c|c|c|c|}
-        \hline
-        child & demo & rew & pun & p(robot) & p(child)\\ \hline
-        Valérie & 127 & 24 & 6 & 2.4e-03 & 5.5e-02\\ \hline
-        Émilien & 223 & 20 & 9 & 1.7e-01 & 3.5e-01\\ \hline
-        Mathieu & 131 & 10 & 3 & 3.8e-03 & 7.9e-03\\ \hline
-        Johan & 98 & 10 & 5 &  1.5e-01 & 3.8e-01\\ \hline
-        Nicolas & 115 & 16 & 4 & 5.3e-04 & 2.7e-03\\ \hline
-        Antoine & 83 & 10 & 3 & 3.1e-02 & 6.0e-01\\ \hline
-        Adèle & 35 & 4 & 2 & 5.0e-02 & 3.7e-02\\ \hline
-        Marie & 40 & 5 & 1 &  5.4e-01 & 2.0e-01\\ \hline
-    \end{tabular}
-    \caption{\small results of evaluations. demo: number of demonstrations provided by
-        the child over all session. rew: number of rewards accorded by
-        the child. pun: number of punishments. p(robot): are the evaluations
-        significantly corresponding to the progression of the robot ? p(child): are the
-        evaluations significantly corresponding to the child's own
-progression ?}
-    \label{table:scores}
-\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Case Study 1: Vincent}
@@ -857,7 +855,7 @@ meaningless scribblings. We addressed this issue by having the robot to
 would instead say \emph{``I'm
 not sure to understand what you are drawing...''}), so that the child had to
 pay good attention to what he would demonstrate to the robot. Also, to make
-the robot's progresses evident, we modified the initialization step of the
+the robot's progress evident, we modified the initialization step of the
 learning algorithm to start with a roughly vertical stroke instead of a
 deformed number (see the initial state on Figure~\ref{learning_6_demos}).
 
