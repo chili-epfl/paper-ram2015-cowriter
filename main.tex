@@ -57,7 +57,7 @@ $^2$Instituto Superior Técnico, University of Lisbon, Portugal}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{A Different Paradigm for Educative Robots}
 
-Thomas is five and an half, and has been diagnosed with visuo-constructive
+Thomas is five and half, and has been diagnosed with visuo-constructive
 deficits. He is under the care of an occupational therapist, and tries to
 workaround his inability to draw letters in a consistent manner. Vincent is six
 and struggles at school with his poor handwriting and even poorer
@@ -66,7 +66,7 @@ self-confidence.\footnote{Children's names have been changed.}
 While Thomas is lively and always quick at shifting his attention from one
 activity to another, Vincent is shy and poised. Two very different children,
 facing however the same difficulty to write in a legible manner. And, hidden
-beyond this impaired skill, psycho-social difficulties also arise: they
+beyond this impaired skill, psycho-social difficulties arise: they
 underperform at school, Thomas has to go for follow-up visits every week,
 they both live under the label ``requires special care''. This is a source of
 anxiety for the children and for their parents alike.
@@ -80,25 +80,26 @@ anxiety for the children and for their parents alike.
 \end{figure}
 
 Remediations for handwriting difficulties traditionally involve long
-interventions (at least 10 weeks, \cite{Hoy2011}), essentially consisting in
+interventions (at least 10 weeks~\cite{Hoy2011}), essentially consisting in
 handwriting training with occupational therapists, and primarily addressing the
 \emph{motor} deficits.  Improvements in self-confidence and anxiety occur (at
 best) as a side-effect of the child improving his/her handwriting skills and,
 consequently, improving his/her performance at school.
 
-We present in this article a new take on this educative challenge, as a
-remediation procedure that involve a ``bad writer'' robot that is \emph{taught}
-by the child: by building on the \emph{learning by teaching} paradigm, not only
-the child practises handwriting but, as (s)he takes on the role of the teacher,
+We present in this article a new take on this educative challenge: a remediation
+procedure that involve a ``bad writer'' robot that is \emph{taught} by the
+child. By building on the \emph{learning by teaching} paradigm, not only the
+child practises handwriting but, as (s)he takes on the role of the teacher,
 (s)he also positively reinforce his/her self-esteem and motivation: his/her
 social role shifts from the ``underperformer'' to ``the one who knows and
-teaches''.
+teaches''. And by relying on a robot, we can tailor the exercises and the
+learning rate to each children' needs, as we show in this article.
 
 \subsection{Learning by Teaching}
 
 The \emph{learning by teaching} paradigm, which engages the student in the act
 of teaching another, has been shown to produce motivational, meta-cognitive, and
-educational benefits in a range of disciplines~\cite{Rohrbeck2003}.  The
+educational benefits in a range of disciplines~\cite{Rohrbeck2003}. The
 application of this paradigm to handwriting intervention remains, however,
 unexplored. One reason for this may be due to the requirement of an
 appropriately unskilled peer for the child to tutor: this may indeed prove
@@ -144,16 +145,19 @@ robot is the learner: the child must engage in a (meta-) cognitive relationship
 with the robot to try to understand why the robot fails and how to help it best.
 Here, the robot is more than just an activity facilitator or orchestrator -- its
 physical presence and embodiment induce agency and anthropomorphising, and
-cognitively engage the child into the learning activity.
+cognitively engage the child into the learning activity (be it consciously or
+not).
 
-Besides the commitment of the child into the interaction build on the
-``protégé effect'': the teacher feels responsible for his student, commits
+Besides the commitment of the child into the interaction build on a
+psychological effect known as the
+``protégé effect''~\cite{Chase2009}: the teacher feels responsible for his student, commits
 to the student's success and possibly experiences student's failure as his own
 failure to teach. Teachable computer-based agents have previously been used to
 encourage this ``protégé effect'', wherein students invest more effort into
 learning when it is for a teachable agent than for themselves~\cite{Chase2009}.
 We rely on this cognitive mechanism to reinforce the child's commitment into the
-robot-mediated handwriting activity.
+robot-mediated handwriting activity, and we indeed show sustained child-robot
+engagement over extended periods of time (several hours spread of a month).
 
 For these two reasons, our approach is to be distinguished from previous works in
 educational robotic. Most of these do not consider the agency induced by the
@@ -166,9 +170,7 @@ In our case, the role of agency is stronger: it induces meta-cognition (``I am
 interacting with an agent, so I need to reflect on how to best teach him'')
 which is beneficial for the learning process; it also induces a protégé
 effect (``I want my robot-agent to succeed!'') which support the commitment of
-child into the interaction, also for longer period of time (we report in this
-article upon two case studies where children were indeed interacting with the
-same robot for several hours, spanned over several weeks).
+child into the interaction, also for longer period of time.
 
 
 Building on these socio-cognitive mechanisms, our intent is therefore to design
@@ -178,14 +180,16 @@ children would both practise without knowing it and recover self-confidence and
 self-esteem by supporting a worst-than-themselves robotic ``student''.
 
 The following sections of the paper go into details. We first provides a
-brief overview of the robotic system and the interaction it induces. We then
-give the details of machine-learning techniques that allow the robot to learn
+brief overview of the robotic system and the interaction it induces. We also
+present the machine-learning techniques that allow the robot to learn
 from the children, followed by the implementation on a {\sc nao} robot.
 
-We then present and report on the four school experiments and the two case
-studies that we conducted over the last two years. While the focus of the school
-experiments was mostly technical validation and data acquisition, the two case
-studies that lasted each about 4 weeks, gave us initial insights on the
+We then present and report on the field experiments that we conducted over the
+last two years, including four studies at school, one longer experiment
+with eight children at the surgery of an occupational therapist, and two
+one-month long case studies. While the focus of the school
+experiments was mostly technical validation and data acquisition, the three
+other experiments involved children with actual deficits, and gave us initial insights on the
 relevance and effectiveness of our approach.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -194,24 +198,24 @@ relevance and effectiveness of our approach.
 \section{Implementation of the Interaction}
 
 Figure~\ref{experimental_setup} illustrates our general experimental setup: a
-face-to-face child-robot interaction with an (autonomous) Aldebran's {\sc nao}
+face-to-face child-robot interaction with an autonomous Aldebran's {\sc nao}
 robot.
 
 A tactile tablet (with a custom application) is used for both the robot and the
 child to write: during a typical round, the child requests the robot to write
 something (a single letter, a number or a full word), and push the tablet
-towards the robot, the robot writes on the tablet by gesturing the writing (but
-without actually physically touching the tablet), the child then pull back the
+towards the robot. The robot writes on the tablet by gesturing the writing -- the
+letters being actually drawn by the tablet application itself. The child then pull back the
 tablet, corrects the robot's attempt by writing him/herself on top or next to
 the robot's writing (see Figure~\ref{fig:diego}), and ``send'' his/her
 demonstration to the robot by pressing a small button on the tablet. The robot
 ``learns'' from this demonstration and tries again.
 
-Since the child is assumed to take on the role of the teacher, we had to ensure
-(s)he would be able to manage by him/herself the turn-taking and the overall
-progression of the activity (moving to the next letter or word). In our design,
+Since the children are assumed to take on the role of the teachers, we had to ensure
+they would be able to manage by themselves the turn-taking and the overall
+progression of the activity (moving forwards to the next letter or word). In our design,
 the turn-taking relies on the robot prompting for feedback once it is done with
-its writing (simple sentences like ``What do you think?''), and pressing on a
+its writing (through simple sentences like ``What do you think?''), and pressing on a
 small robot icon on the tablet once the child has finished correcting. In our
 experiments, both were easy to grasp for children.
 
@@ -238,8 +242,8 @@ not too quick) writing improvements.
 
 Then, the actual implementation on the robot requires the coordination of
 several modules (from performing gestures and acquiring the user's input to
-the high-level state machine), spread over several devices (the robot itself,
-one laptop and up to four tactile tablets for certain studies we conducted). We
+the state machine implementing the high-level behaviour), spread over several devices (the robot itself,
+one laptop and up to four tactile tablets for some of the studies that we conducted). We
 relied on ROS to ensure the synchronization and communication between these
 modules.
 
@@ -263,7 +267,7 @@ article~\cite{hood2015when}.
 By changing the eigenvalues associated to these eigenvectors and regenerating
 letters with the reverse procedure, it becomes then easy to generate new
 letters, with distortions that are actually plausible handwriting errors: they
-are actually \emph{exaggerations} of variance of writing styles that naturally
+are actually exaggerations of variance of writing styles that naturally
 occurs amongst adult writers.  Figure~\ref{fig:sampleLetters} shows examples of
 deformed ``g'' generated with such a technique.
 
@@ -284,7 +288,7 @@ deformed ``g'' generated with such a technique.
 
 The same technique can also be applied to \emph{classify} demonstrations,
 \emph{assess} their quality and \emph{learn} from them. Figure~\ref{fig:h} shows
-for example 9 allographs of ``h'' written by a 6 years old child, along with the
+for example nine allographs of ``h'' written by a 6 years old child, along with the
 mean letter from the dataset (reference letter). By projecting each of the
 demonstrations onto the eigenspace of ``h'' (Figure~\ref{fig:h}b), we observe
 that:
@@ -300,11 +304,11 @@ that:
 \begin{figure}[ht!]
     \centering
     \subfigure[Nine allographs of the cursive ``h'', next to the reference]{
-        \includegraphics[width=0.4\columnwidth]{h}
+        \includegraphics[width=0.45\columnwidth]{h}
     }
     \subfigure[Same samples, normalized and projected in the eigenspace spanned from the
         3 first eigenvectors: clusters arise, that actually match writing styles.]{
-        \includegraphics[width=0.4\columnwidth]{eigenspace-uniformization}
+        \includegraphics[width=0.45\columnwidth]{eigenspace-uniformization}
     }
 
     \caption{\small Projecting demonstrated letters onto the eigenspace
@@ -316,7 +320,7 @@ that:
 
 The algorithm for machine-learning becomes then a simple matter of converging at
 a specific pace towards the child demonstration in the eigenspace.
-Figure~\ref{learning_6_demos}, at the end of the article, illustrates the
+Figure~\ref{learning_6_demos} (p.~\pageref{learning_6_demos}) illustrates the
 process with the complete learning cycle of the number ``6''.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -384,24 +388,26 @@ actual writing is displayed on a synchronised tablet.
 
 The overall architecture of the system (Figure~\ref{fig:archi}) is therefore
 spread over several devices: the {\sc nao} robot itself, that we address via
-both a ROS API\footnote{The ROS stack for {\sc nao} is available at
-\url{http://wiki.ros.org/nao_robot}.} and the Aldebaran-provided NaoQI API, one
-to four Android tablets (the main tablet is used to print the robot's letter and
+both a ROS API\footnote{The ROS documentation for {\sc nao} is available at
+\url{http://wiki.ros.org/nao}.} and the Aldebaran-provided NaoQI API, one
+to four Android tablets (the main tablet is used to draw the robot's letter and
 to acquire the children's demonstrations; more tablets have been used in some
 studies, either to let the child input words to be written, or for the
 experimenter to qualitatively annotate the interaction in a synchronized
 fashion), and a central laptop running the machine learning algorithms, the
-robot's handwriting gesture generation and high level control of the activity.
+robot's handwriting gesture generation (based on the NaoQI inverse kinematics
+library) and high level control of the activity.
 
 Since the system does not actually require any CPU-intensive process, the laptop
 can be removed and the whole logic run on the robot. Due to the relative
 difficulty to deploy and debug ROS nodes directly on the robot, the laptop
-remains however convenient during the development phase and we kept if during
+remains however convenient during the development phase and we kept it during
 our experiments.
 
 Most of the nodes are written in Python, and the whole source code of the
 project is available online\footnote{The primary repository is
-\url{https://github.com/chili-epfl/cowriter_letter_learning}.}
+\url{https://github.com/chili-epfl/cowriter_letter_learning}.}. Further details
+on the technical implementation are available in~\cite{hood2015when}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -410,10 +416,10 @@ project is available online\footnote{The primary repository is
 \section{Field Studies}
 
 The system has been deployed and tested in several situations: in three
-different schools (resulting in relatively short child-robot interactions with
+different schools (relatively short child-robot interactions with
 more than 70 children, aged 5 to 8), in the surgery of an occupational
 therapist (with 8 children, each interacting several hours with the system),
-and for two case studies that each lasted several weeks. Table~\ref{studies}
+and in two case studies that each lasted several weeks. Table~\ref{studies}
 gives an overview of these studies.
 
 \begin{table}[ht!]
@@ -423,16 +429,20 @@ gives an overview of these studies.
 \footnotesize
 \begin{tabular}{@{}lp{4cm}p{2.2cm}p{2cm}l@{}}
 \toprule
-{\bf Study}     & {\bf Type}                                    & {\bf Avg. duration}              & {\bf Children \#}                     & {\bf Ages} \\ \midrule
-{\it ISG 1}     & Unstructured group interaction at school      & 16 min/group               & 4 $\times$ 8 children                 & 6-7        \\
-{\it Florimont} & Individual/Pair interaction at school         & 11 min/group               & 7 (individual) + 7 $\times$ 2 (pairs) & 7-8        \\
-{\it Vincent}     & Case-study, spanning over 4 weeks              & 1.5h $\times$ 4 weeks & 1                                     & 6          \\
-{\it Haut-Lac}  & Pair interaction at school & 26 min/group                            & 7 $\times$ 2                          & 5-6        \\
-{\it ISG 2}     & Individual interaction at school              & 18 min                            & 6                                     & 5-6        \\
-{\it Thomas}     & Case-study, spanning over 4 weeks              & 1h $\times$ 4 weeks        & 1                                     & 5          \\
-{\it Normandie}     & Individual interactions at surgery               & 1h $\times$ 3 sessions & 8                                     & 6-8          \\ \bottomrule
+{\bf Study}        & {\bf Type}                               & {\bf Avg. duration}    & {\bf Children \#}                     & {\bf Ages} \\ \midrule
+{\it School A (1)} & Unstructured group interaction at school & 16 min/group           & 4 $\times$ 8 children                 & 6-7        \\
+{\it School B}     & Individual/Pair interaction at school    & 11 min/group           & 7 (individual) + 7 $\times$ 2 (pairs) & 7-8        \\
+{\it School C}     & Pair interaction at school               & 26 min/group           & 7 $\times$ 2                          & 5-6        \\
+{\it School A (2)} & Individual interaction at school         & 18 min                 & 6                                     & 5-6        \\ \midrule
+{\it Surgery}      & Individual interaction at surgery        & 3 sessions $\times$ 1h & 8                                     & 6-8        \\ \midrule 
+{\it Vincent}      & Case-study, spanning over 4 weeks        & 4 weeks $\times$ 1.5h  & 1                                     & 6          \\
+{\it Thomas}       & Case-study, spanning over 4 weeks        & 4 weeks $\times$ 1h    & 1                                     & 5          \\ \bottomrule
 \end{tabular}
 \end{table}
+
+We report hereafter the main design choices and results for each of these
+studies and experiments. The interested reader can find supplementary details
+in~\cite{jacq2016building, hood2015when}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{System Validation at Schools}
@@ -451,7 +461,7 @@ engagement).
     \includegraphics[height=3.9cm]{schools}
     \includegraphics[height=3.9cm]{schools2}
     \caption{\small The first field studies were focused on technical validation, with
-    above 70 pupils interacting with the robot over short periods (around 15
+    more than 70 pupils interacting with the robot over short periods (around 15
 minutes), either alone or in small groups.}
     \label{fig:schools}
 \end{figure}
@@ -554,11 +564,11 @@ in this role.
 
 The experiment took place at the surgery of an occupational therapist in
 Normandy, France. Eight children participated, all showing troubles with
-handwriting acquisition: Valentine (7 years old), Alexandre (6.5) and Jonathan
-(7) are under the care of the occupational therapist. Enzo (8) and Matenzo (7)
+handwriting acquisition: Valérie (7 years old), Antoine (6.5) and Johan
+(7) are under the care of the occupational therapist. Émilien (8) and Mathieu (7)
 are repeating their school year because of writing difficulties. Mona (6) and
-Adele (8) are both ranked at the bottom of their respective classes in writing
-activities. Nathan (7) is under the care of a neurologist, and has been
+Adèle (8) are both ranked at the bottom of their respective classes in writing
+activities. Nicolas (7) is under the care of a neurologist, and has been
 diagnosed with specific language impairment. Given their school level, all those
 children would be expected to know how to correctly shape cursive letters. 
 
@@ -646,17 +656,17 @@ evaluating themselves.
     \centering
     \begin{tabular}{|c|c|c|c|c|c|}
         \hline
-        Child & demo & rew & pun & p(robot) & p(child)\\ \hline
-        Valentine & 127 & 24 & 6 & 2.4e-03 & 5.5e-02\\ \hline
-        Enzo & 223 & 20 & 9 & 1.7e-01 & 3.5e-01\\ \hline
-        Matenzo & 131 & 10 & 3 & 3.8e-03 & 7.9e-03\\ \hline
-        Jonathan & 98 & 10 & 5 &  1.5e-01 & 3.8e-01\\ \hline
-        Nathan & 115 & 16 & 4 & 5.3e-04 & 2.7e-03\\ \hline
-        Alexandre & 83 & 10 & 3 & 3.1e-02 & 6.0e-01\\ \hline
-        Adele & 35 & 4 & 2 & 5.0e-02 & 3.7e-02\\ \hline
-        Mona & 40 & 5 & 1 &  5.4e-01 & 2.0e-01\\ \hline
+        child & demo & rew & pun & p(robot) & p(child)\\ \hline
+        Valérie & 127 & 24 & 6 & 2.4e-03 & 5.5e-02\\ \hline
+        Émilien & 223 & 20 & 9 & 1.7e-01 & 3.5e-01\\ \hline
+        Mathieu & 131 & 10 & 3 & 3.8e-03 & 7.9e-03\\ \hline
+        Johan & 98 & 10 & 5 &  1.5e-01 & 3.8e-01\\ \hline
+        Nicolas & 115 & 16 & 4 & 5.3e-04 & 2.7e-03\\ \hline
+        Antoine & 83 & 10 & 3 & 3.1e-02 & 6.0e-01\\ \hline
+        Adèle & 35 & 4 & 2 & 5.0e-02 & 3.7e-02\\ \hline
+        Marie & 40 & 5 & 1 &  5.4e-01 & 2.0e-01\\ \hline
     \end{tabular}
-    \caption{\small Results of evaluations. demo: number of demonstrations provided by
+    \caption{\small results of evaluations. demo: number of demonstrations provided by
         the child over all session. rew: number of rewards accorded by
         the child. pun: number of punishments. p(robot): are the evaluations
         significantly corresponding to the progression of the robot ? p(child): are the
@@ -670,7 +680,7 @@ progression ?}
 
 \paragraph{Context, Study Design}
 
-During this first case study, we invited and followed Vincent, a six years old
+For the first case study, we invited and followed Vincent, a six years old
 child, once per week over a period of a month. Our primary aim was to address the
 question of whether we can sustain Vincent's engagement and commitment to the
 writing activity over such a period.
@@ -687,7 +697,7 @@ writing activity over such a period.
 The study took place at our laboratory (Figure~\ref{fig:diego}), and we chose to
 design the activity around a storyline meant to be attractive for a 6 years old
 boy: one of our {\sc nao} was away for a mysterious scientific mission, and it
-needed the support of another one -- which stayed at the lab -- to interpret
+needed the support of another one -- which would remain at the lab -- to interpret
 curious pictures that were sent every week. Vincent had to help the second robot
 understanding the pictures, and since the two robots had somehow beforehand
 agreed to communicate with ``letters written like humans'' (\ie handwritten),
@@ -713,36 +723,42 @@ teacher, and in turn, Vincent's handwriting.
 
 \begin{figure}
     \centering
-    \subfigure[Initial letter, generated by the robot]{
+    \subfigure[Initial text, generated by the robot]{
         \includegraphics[height=6cm]{diego-initial-letter}
     }
-    \subfigure[Final letter, after training with Vincent]{
+    \subfigure[Final text, after training with Vincent]{
         \includegraphics[height=6cm]{diego-final-letter}
     }
 
     \caption{\small (French) text generated by the robot, before and after a one
-        hour long interaction session with the child. As an example, the red box
-        highlights the changes on the word ``envoyer''.}
+        hour long interaction session with the child. The red box
+        highlights one instance of striking improvement of the robot's
+        handwriting legibility.}
 
     \label{fig:stimuli}
 \end{figure}
 
-Overall, Vincent provided 154 demonstrations to the robot, and he remained
-actively engaged over the four weeks. The story was well accepted by Vincent and
+Over the whole duration of the study, Vincent had provided 154 demonstrations to the robot, and he remained
+actively engaged over the four weeks. The story was well accepted by the child and
 he seriously engaged into the game. After the first week, he showed good
-confidence to play with the robot and he built affective bonds with the robot
-over the course of the study, as evidenced by some cries on the last session,
-and several letters sent to the robot \emph{after} the end of the study
-(one of them 4 months later) to get news. This represents a promising initial
-result: we can effectively keep a child engaged with the robot for a relatively
-long periods of time (about 5 hours).
+confidence to play with the robot and by the end of the study he had built
+affective bonds with the robot, as evidenced by several letters he did send to the
+robot \emph{after} the end of the study (one of them four months later) to get
+news. This represents an initial validation of our hypothesis: our system can effectively keep a
+child engaged with the robot for a relatively long periods of time (about 5
+hours spread over a month).
 
-No conclusion can be drawn in terms of actual handwriting remediation: we did
-not design this study to formally assess possible improvements. However, as pictured on Figure~\ref{fig:stimuli}, Vincent was able to
-significantly improve the robot's skill, and he acknowledged that he had been
-able to help the robot: in that regard, Vincent convinced himself that he was
-``good enough'' at writing to help someone else, which is likely to have
-a positive impact on his self-esteem.
+No hard conclusion can be drawn in terms of actual handwriting remediation: we did
+not design this study to formally assess possible improvements. However, as
+visible on Figure~\ref{fig:stimuli}, Vincent was able to significantly improve
+the robot's skill, and post-hoc interviews revealed that he acknowledged that he
+was the one helping the robot. In that respect, Vincent realized that he was
+``good enough'' at writing to help someone else. Quoting the mother a week
+after the end of the experiment: ``Vincent's handwriting has changed over the
+last weeks, going from a mix of standalone and cursive letters to full words in
+cursive. This requires a lot of efforts and concentration from him, but he did
+succeed during the sessions with the robot as he knew he had to show a
+consistent writing to the robot''.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -754,11 +770,11 @@ The second long-term study was designed with the help of an occupational therapi
 Geneva and aimed at deploying the system for the first time on a real
 therapeutic case.
 
-Thomas is a 5.5 years old child, under the care of an occupational therapist. He
+Thomas is a 5.5 years old child, under the care of this occupational therapist. He
 has been diagnosed with visuo-constructive deficits, which translate into
 difficulties for him to consistently draw letters. Besides, focusing on a task
-is difficult for Thomas, who tends to rapidly shift his attention to something
-else. Since the robot's learning algorithm requires repeated demonstrations of
+is difficult for Thomas, who tends to rapidly shift his attention to other
+things. Since the robot's learning algorithm requires repeated demonstrations of
 similarly shaped letters to converge, the occupational therapist was especially
 interested in observing if the robot would induce a strong enough motivation for
 Thomas to focus on producing regular, consistent letters, thus overcoming his
@@ -769,8 +785,8 @@ over 5 weeks). Contrary to Vincent's experiment, we chose not to introduce any
 storyline beyond a simple prompt (``the robot wants to participate to a robotic
 handwriting contest, will you help him to prepare?''), only provided during the
 first session. Hence, we also tested during this case-study if the robot (and
-the Protégé effect) would induce a strong enough intrinsic motivation to
-keep the child engage over the five weeks.
+the Protégé effect) would induce by itself a strong enough intrinsic motivation to
+keep the child engaged over the five weeks.
 
 \begin{figure}
     \centering
@@ -800,9 +816,10 @@ occurred during one of the session, on the number ``6''.
 %difficulty~\ref{fig:abc-writer}.
 
 Since Thomas would frequently draw mirrored numbers, or hard-to-recognize
-shapes, the learning algorithm of the robot tended to converge towards
+shapes, the learning algorithm of the robot initially tended to converge towards
 meaningless scribblings. We addressed this issue by having the robot to
-\emph{refuse} allographs that were too far from the reference shape (\emph{``I'm
+\emph{refuse} allographs that were too far from the reference shape (the robt
+would instead say \emph{``I'm
 not sure to understand what you are drawing...''}), so that the child had to
 pay good attention to what he would demonstrate to the robot. Also, to make
 the robot's progresses evident, we modified the initialization step of the
@@ -835,12 +852,12 @@ clear their drawing and try again before sending it). According to
 the therapist, it was the first time that Thomas would correct himself in such a
 way, explicitly having to reflect on how \emph{another agent} (the robot) would
 interpret and understand his writing. Figure~\ref{Thomas_progress} shows how
-he gradually improved his demonstrations for some numbers, according to the
+he gradually improved his demonstrations for two different numbers, according to the
 metric we used to make the robot accept/refuse samples.
 
 Since the robot's handwriting started from a simple primitive (a stroke), each
 time Thomas succeeded to have his demonstration accepted by it, the robot's
-improvement was clearly visible (as measured in Figure~\ref{Thomas_distances}).
+improvement was clearly visible (as shown in Figure~\ref{Thomas_distances}).
 This led to a self-rewarding situation that effectively supported Thomas'
 engagement.
 
@@ -863,7 +880,12 @@ pictured on Figure~\ref{Thomas_demos}.}
 	\subfigure[Number ``5'']{
         \includegraphics[width=0.45\linewidth]{henry5}
     }
-    \caption{\small Improvement of Thomas demonstrations for some numbers: a) drawing the allograph of the number 1, b) the number 2 and c) the number 5. Thomas progressively took care of the demonstrations he was providing to the robot for those numbers. We used for this figure the same metric than the one used for the acceptance algorithm. Distances are normalized with respect to the biggest value. The dashed line correspond to the threshold of robot's acceptance.}
+    \caption{\small Improvement of Thomas demonstrations for the numbers ``2''
+        and ``5''. Thomas progressively took care of the demonstrations he was providing to the
+    robot for those numbers. We used for this figure the same metric than the one
+    used for the acceptance algorithm. Distances are normalized with respect to the
+    biggest value. The dashed line correspond to the threshold of robot's
+    acceptance.}
 
     \label{Thomas_progress}
 \end{figure}
