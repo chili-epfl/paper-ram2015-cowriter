@@ -26,6 +26,7 @@
 \newcommand{\ie}{\textit{i.e.}\xspace}
 \newcommand{\etc}{\textit{etc.}\xspace}
 \newcommand{\vs}{\textit{vs.}\xspace}
+\newcommand{\resp}{\textit{resp.}\xspace}
 
 \title{Learning by Teaching a Robot:\\The Case of Handwriting}
 
@@ -632,75 +633,51 @@ is likely engaged into a \emph{playful} instead of \emph{serious} role-playing.
 
 \paragraph{Results}
 
+\begin{table}
+    \centering
+    \begin{tabular}{ccccll}
+        \toprule
+        Child          & \#demos & \#positive & \#negative & $r_{robot}$ & \\ \midrule
+        \emph{Valérie} & 127 & 24 & 6 & 0.25 \small\tt **  \\ 
+        \emph{Émilien} & 223 & 20 & 9 & 0.06 \small\it ns  \\
+        \emph{Mathieu} & 131 & 10 & 3 & 0.23 \small\tt **  \\
+        \emph{Nicolas} & 115 & 16 & 4 & 0.31 \small\tt *** \\
+        \emph{Johan}   & 98 & 10 & 5  & 0.10 \small\it ns  \\
+        \emph{Antoine} & 83 & 10 & 3  & 0.20 \small\tt *   \\
+        \emph{Adèle}   & 35 & 4 & 2   & 0.28 \small\tt *   \\
+        \emph{Marie}   & 40 & 5 & 1   & -0.02 \small\it ns \\ \midrule
+        Total          & 852 & 99 & 33  &   & \\ \bottomrule
+    \end{tabular}
+    \caption{\small Feedback from the children to the robot. \emph{\#demos}
+        denotes the total number of demonstrations drawn by the children;
+        \emph{\#positive} and \emph{\#negative} the number of positive \resp
+        negative feedbacks they provided. $r_{robot}$ reflects the correlation
+        between the feedback provided by the children and the performance of the
+        robot. Results taken from~\cite{jacq2016building}.}
+
+    \label{table:scores}
+\end{table}
+
 All children maintained their engagement during the entire sessions. They
 provided on average 42 demonstrations per session. All children did use the
 feedback buttons (in total, 99 ``thumb up'' and 33 ``thumb down'' were recorded,
 see Table~\ref{table:scores}). 
 
-\begin{table}
-    \centering
-    \begin{tabular}{cccccc}
-        \toprule
-        Child          & \# demos & \# positive & \# negative & $p_{robot}$ & $p_{child}$\\ \midrule
-        \emph{Valérie} & 127 & 24 & 6 & $< .003$ \tt ** & $< .055$ \tt .\\ 
-        \emph{Émilien} & 223 & 20 & 9 & $.17$ \it ns & $.35$ \it ns \\
-        \emph{Mathieu} & 131 & 10 & 3 & $< .004$ \tt ** & $< .008$ \tt **\\
-        \emph{Johan}   & 98 & 10 & 5 &  $.15$ \it ns & $.38$ \it ns  \\
-        \emph{Nicolas} & 115 & 16 & 4 & $< .0006$ \tt *** & $< .003$ \tt ** \\
-        \emph{Antoine} & 83 & 10 & 3 & $< .031$ \tt * & $.6$ \it ns \\
-        \emph{Adèle}   & 35 & 4 & 2 & $< .05$ \tt * & $< .04$ \tt * \\
-        \emph{Marie}   & 40 & 5 & 1 &  $.54$ \it ns & $.2$ \it ns \\ \midrule
-        Total          & 852 & 99 & 33 &   & \\ \bottomrule
-    \end{tabular}
-    \caption{\small results of evaluations. demo: number of demonstrations provided by
-        the child over all session. rew: number of rewards accorded by
-        the child. pun: number of punishments. p(robot): are the evaluations
-        significantly corresponding to the progression of the robot ? p(child): are the
-        evaluations significantly corresponding to the child's own
-progression ?}
-    \label{table:scores}
-\end{table}
-
-To study a possible correlation between the children's feedback and the robot's
-improvements, estimated the robot's progress as the difference between an
+To study the correlation between the children's feedback and the robot's
+actual improvements, we estimate the robot's progress as the difference between an
 initial score (average euclidian distance between the shape drawn by the robot
 at its first attempt and the shape of the reference letter) and the robot's
-score at the current round of demonstrations.
+score at the current round of demonstrations. We then correlate this progress
+to the positive or negative feedback provided by the children, following a
+statistical method presented in~\cite{jacq2016building}.
 
-Let $P_i$ be the estimated progression of the robot at time $ i$. Of course, if
-the child chose to switch to a new word at time $ j$ , we have $ P_{j}=0$ and
-clearly $ P_0=0$.  To measure whether the fact that the child was rewarding the
-robot when it was progressing was significant or not, we generated 10000 times
-the same number of reward/punishment but accorded at random times. Let $ R_i^n$
-be the $n^{th}$ generated evaluation at time $ i$ ($ R_i^n = 0$ if no evaluation
-occurred at time $ i$ , $ R_i^n=1$ if a reward occurred at time $i$ and
-$R_i^n=-1$ if a punishment occurred at time $i$), and $\overline{R}_i$ be the
-actual evaluation at time $i$. For each $n^{th}$ generated sequence of
-evaluation, we compute a score of evaluation: $$ S^n = \sum\limits_i{R_i^n
-P_i}$$ Then we can estimate the p-value $p$ of the actual score: $$ \overline{S}
-= \sum\limits_i{\overline{R}_i P_i}$$ given the distribution of the generated
-scores $\left(S^n\right)_n$, which is assumed to be Gaussian: 
+We find (Table~\ref{table:scores}) that the feedback of five out of the eight
+children do significantly correlate with the actual performance of the robot:
+this indicates that these children are effectively taking on the teacher's
+clothes and are seriously providing feedback to the robot. \fixme{what can we
+say about the 3 others? they did not play seriously, or they were unable to
+actually recognize the robot mistakes?}
 
-$$
-p(\overline{S})= \mathbb{P}{\left[X>\overline{S}\right]} = 1-\phi{\left(\frac{\overline{S}-\mu}{\sigma}\right)}
-$$
-
-where $\phi$ denotes the cumulative distribution function of the standard normal
-distribution, $\mu$ the mean and $\sigma$ the deviation of the generated scores
-$\left(S^n\right)_n$.  As a result, we found that 5 of the 8 children obtained a
-score of evaluation significantly hight ($p(\overline{S})<0.05$). Score of
-evaluation p-values of each child is reported in the second-to-last column of
-Table~\ref{table:scores}.
-
-We also studied correlation between children's evaluations and their own
-progression. The analysis was conducted in the same way, using distances between
-children demonstrations and reference allographs to compute children
-progressions.  3 of 5 children that played ``seriously" obtained score of
-evaluation of their own progression significantly high (last column of
-Table~\ref{table:scores}). For those children, it seems that the robot was
-reflecting their own performances, and while they were judging the robot
-positively (three times more rewards than punishments) they were actually
-evaluating themselves.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Case Study 1: Vincent}
