@@ -906,25 +906,122 @@ engagement.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Summary of the Findings}
+\section{Summary of the Findings and Discussion}
 
 The four school studies, the experiment at the surgery and the two case-studies
 provide a first broad picture of how a robot-based remediation to handwriting is
-accepted by the children and practitioners, and what are the outcomes that can
-be expected.
+accepted by the children and practitioners, and what outcomes can be expected.
 
 In total, more than 80 children have interacted with the system, for a total
-duration of more than 38 hours in multiple experimental configurations
+duration of more than 38 hours, in multiple experimental configurations
 (individual interaction \vs pairs \vs groups; at school, in the lab, at a
 surgery; short interactions \vs long, repeated interactions; 5 to 8 years old
-children).
+children). We summarize hereafter the main findings from these experiments and
+discuss some of the critical points of our approach.
+
+\paragraph{Technical Assessment} We set ourselves the challenge of developing an
+autonomous robotic system able to perform handwriting tasks with children.
+Over the course of the different studies and experiments, thousands of
+letters have been indeed generated and drawn on the tactile tablet by the robot, in
+response to thousands of demonstrations from children. Most of the experiments have been
+carried out in the wild, at six different locations in total. As reported in the
+technical studies section, the system performed generally well: the children had no
+issues interacting with the robot, the robot experienced relatively few crashes,
+and those crashes did not significantly impaired the interactions. The system
+has furthermore proved robust enough to conduct several hour-long experiments.
+However, we also found that the level of expertise required to deploy and
+operate our system still makes the presence of an experimenter mandatory at all
+time. Non-trivial technical developments may be required to reach a level of
+usability suitable for a broader, non-expert, audience.
+
+\paragraph{Acceptance} When we started the project, the mere acceptance of the
+robot in the educative and/or medical context of handwriting remediation was not
+obvious. Expectedly, the attitude of practitioners toward the robot indeed
+varies a lot at individual levels. The process that led us to select the schools
+and surgeries for the experiments is interesting in that regard. The very first
+school we contacted was a local public school. The head teacher was positive
+about the study, but did ask for official agreement, which never happened. As we
+learnt several months later, the request was still laying on the desk of a
+regional education officer who happens not to be too keen on novel technologies.
+Conversely, the three schools where we did conduct the first studies are all
+private schools, generally open to novel learning methods. The teachers we met
+during these experiments certainly had questions about the rationale and
+end-purpose of the project, but were confident about its educative and social
+value.
+
+Similarly with the occupational therapists: while Thomas' therapist did
+voluntarily contacted us (after hearing about the project at the radio) and
+readily involved herself in the design of the experiment with Thomas, we had
+less positive feedback from other practitioners: in one instance, we contacted
+ourselves a local group of school psychologists and occupational therapists to
+present the project: after the meeting, the opinions were definitively mixed,
+with some therapists willing to conduct actual experiments with their children,
+and others not quite as enthusiastic.
+
+Lastly (and as expected), the reaction of the children to the robot was good:
+they enjoyed interacting with the system, and, as we have shown, they actually
+committed to their teacher role. The teaching situation was well accepted: while
+we had initial doubts about how believable a learner the robot would be, the
+children did not appear to show any specific issues with it. In particular,
+technical choices like having the robot to only gesture writing on the tablet
+instead of actually \emph{physically} writing with a pen, were not raised as
+issues.
+
+\paragraph{Engagement} We measured the engagement of the children by three
+different means: the number of demonstrations they provided to the robot, the
+amount of qualitative feedback they gave to the robot (in the \emph{Surgery}
+experiment), and to what extend they were focusing on the task (measure of the
+with-me-ness). Independently of the experimental setting, it appears that the
+children engage easily into the interaction. More interestingly, we show in the
+\emph{Surgery} experiment that they generally take on the role of a teacher
+easily, that they act this role seriously (and not only playfully), and that
+they can assume this role over an extended period of time. Designing a system
+that keeps children engaged over several hours is especially important for
+handwriting remediation, and we show in the case-studies that even children as
+young as 5.5 years old like Thomas were able to do so. This seems to indicate
+that our approach could be relevant for a broad range of ages.
+
+Another finding relates to the Protégé effect: as seen with Vincent's case-study
+(with the parents emphasizing how Vincent was aware he had to be consistent in
+his writing to help the robot, or with him sending us a mail several months
+later to know how the robot was doing with its writing) or with Thomas's
+case-study (when Thomas realizes that the robot ``does not understand'' when his
+demonstrations are not legible enough, and consequently quickly improves his
+own writing to better help the robot), our system does seem to elicit a Protégé
+effect that not only help the children to remain engaged into their teaching
+over several weeks, but also positively impact their learning process (Vincent
+strives to write in a consistent manner, as does Thomas). This supports {\it a
+posteriori} our choice to build an interaction situation based on the
+\emph{learning by teaching} paradigm.
+
+\paragraph{Remediation Efficacy} Vincent's case study did provide us with
+initial material to evidence handwriting improvements (Figure~\ref{fig:stimuli})
+and the study with Thomas provide further data, both quantitative
+(Figure~\ref{Thomas_progress}) and qualitative (feedback from the therapist that
+points how Thomas is much better at drawing consistent shapes in a repeated manner,
+as well as reflecting on his own performance by training several times before
+actually sending a demonstration to the robot).
+
+We must however remain cautious here as for the actual role of the system: while
+the children were indeed the one deciding what to teach to the robot and the
+robot was autonomously learning and responding, the role of the adults (the
+experimenters or the occupational therapists) should not be underestimated.
+Beyond the normal explanations on how to operate the tablet and how to interact
+with the robot, the adults played the role of a facilitator in every of the
+studies by prompting the children to comment on the robot's performance,
+suggesting possible corrections, or proposing to try another letter/number/word.
+This facilitation not only compensates for the possible shortcomings of the interaction,
+but is also a fundamental part of the learning process itself. In that respect,
+our robot is essentially a tool that creates a favourable learning situation for
+the child, and where the adult (be it a teacher or a therapist) keeps its entire
+educative role.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
 
 We believe that this research provides a novel perspective on educative robots
-at several levels. We show that:
+at several levels. We have shown that:
 
 \begin{itemize}
     \item robots in an educative context are certainly \textbf{relevant and
@@ -956,16 +1053,17 @@ at several levels. We show that:
 As we show through extensive experimental validation, these claims are not just
 words: we have effectively deployed robots on the field, with children suffering
 actual handwriting impairments. Our results are promising in terms of sustaining
-the interest and attention of children on otherwise boring writing exercises,
+the interest and attention of children on otherwise repetitive writing exercises,
 and we evidence handwriting improvements.
 
 It is however still early to quantify the lasting effects of this remediation:
 handwriting is a complex cognitive skill, that builds on many individual and
-social factors. Self-confidence is one of them. Our approach that endows the
-child with the role of a teacher who can help a robot: we expect it may help
-some children to recover self-esteem and self-confidence. However the
-experiments that we have conducted so far do not allow us to confirm this
-hypothesis, and more research need to be conducted in this direction.
+social factors. Self-confidence is one of them. Our approach endows the child
+with the role of a teacher who can help a robot: we expect it may as well help
+some children to recover self-esteem and self-confidence by putting them in a
+positive, gratifying role. The experiments that we have conducted so far do not
+allow us to confirm this hypothesis yet, and more research will have to be
+conducted in this direction.
 
 
 \paragraph{Possible Ethical Concerns} Two aspects of this research ought to be
