@@ -178,15 +178,72 @@ original way. By getting children to teach a robotic agent how to write, those
 children would both practise without knowing it and recover self-confidence and
 self-esteem by supporting a worse-than-themselves robotic ``student''.
 
-The following sections of the paper go into the details. We first provide a brief
-overview of the robotic system and the interaction it induces. We also present
+\subsection{Research Questions}
+
+These initial considerations can be turned into a set of research questions.
+
+\paragraph{Technical Feasibility} The technical feasibility of our system (and
+its actual implementation) is the first question -- actually a prerequisite --
+that we want to address. The robotic system needs to be able to produce
+handwriting in a believable manner; the legibility of its handwriting (\ie the
+apparent skill of the robot) needs to be easy to parametrise and must evolve
+over time in a controlled manner; the robot needs to acquire, recognize and
+learn from handwriting demonstrations that may be hardly legible (due to the
+impairments of our target children); the design and implementation of the
+robot's behaviors must effectively sustain and support a complex and long-term
+interaction with children; and finally, in contrast to previous work, we aim at
+building a fully autonomous agent that can be deployed and used by non-experts
+(teachers, therapists). Taken together, these technical objectives are
+ambitious and concern a range of different technical subcomponents.
+
+\paragraph{Acceptance} A second research question that we study here relates to
+the acceptance of such a system in educative and medical contexts. Remediation
+to cognitive deficits is a sensitive question for the caretakers, all the more
+so when working with children. Introducing a robot-based system in such
+situations is not self-evident, especially as the mentor-protégé relationship
+further relies on building strong affective and cognitive bonds between the
+child and the robot (\ie the robot is not simply experienced as a passive tool,
+as would be a computer program for instance). By establishing collaborations
+with teachers, parents and therapists, we aim at going to the practitioners'
+field level and explore the conditions for such a robot-based system to be
+accepted.
+
+\paragraph{Engagement} We have already mentioned that handwriting remediation
+requires exercising over long periods of time. In terms of human-robot
+interaction, this translates into a third research question: how to sustain
+several hours of interaction while performing a task (handwriting) which is
+essentially a boring routine? This is usually studied in term of
+\emph{engagement}: how to engage, and thereafter sustain the engagement, of a
+child into an interaction with a robot? As already hinted, we hypothesize that
+the \emph{learning by teaching} paradigm may prove an effective lever to get the
+child to commit to help the robot over an extended period of time. This needs to
+be evidenced, which incidentally calls for actually running interaction
+experiments over long durations (several hours spread over several weeks).
+
+\paragraph{Remediation Efficacy} Finally, the last, key research question is: is
+our approach effective in helping children to recover from handwriting deficits?
+Answering this question in a broad, general way is unlikely as {\it 1)} the
+observed deficits vary a lot between the children (no single metric) and have
+complex, compound causes, and, {\it 2)} ``learning how to write'' is not a
+monolithic, linear skill that could be easily rated from 0 to 1.  However, by
+crossing qualitative assessments made by the caretakers with quantitative
+measures of visual similarity between the letters drawn by the children and some
+reference templates, we aim at assessing the impact of our system on the
+children' handwriting, at least in terms of trend.
+
+\vspace{2em}
+The following sections explore and attempt to answer these
+questions. We first provide an
+overview of the robotic system and the interaction it induces
+in Section~\ref{impl}. We present there
 the machine-learning techniques that allow the robot to learn from the children,
-followed by the implementation on a {\sc nao} robot.
+as well as the actual implementation of the system on a {\sc nao} robot.
 
 We then present and report on the field experiments that we have conducted over
-the last two years, including four studies at schools, one longer experiment with
-eight children in an occupational therapy clinic, and two one-month
-long case studies. While the focus of the school experiments was mostly the
+the last two years, including four studies at schools
+(Section~\ref{studies_school}), one longer experiment with
+eight children in an occupational therapy clinic (Section~\ref{study_normandy}), and two one-month
+long case studies (Sections~\ref{vincent} and~\ref{thomas}). While the focus of the school experiments was mostly the
 technical validation and data acquisition, the three other experiments involved
 children with actual deficits, and gave us initial insights into the relevance and
 effectiveness of our approach.
@@ -195,6 +252,7 @@ effectiveness of our approach.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Implementation of the Interaction}
+\label{impl}
 
 Figure~\ref{experimental_setup} illustrates our general experimental setup: a
 face-to-face child-robot interaction with an autonomous Aldebran's {\sc nao}
@@ -447,6 +505,7 @@ in~\cite{jacq2016building, hood2015when}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{System Validation at Schools}
+\label{studies_school}
 
 Over the two years of the project, we conducted four studies in schools
 (Figure~\ref{fig:schools}). These experiments were meant to technically validate
@@ -580,11 +639,12 @@ The other three experiments (the group study at the clinic and the two
 case-studies) provide further qualitative evidence of engagement over longer
 interaction periods. In particular, as reported hereafter, the two 4-week long
 case studies that have been conducted so far show that our system can sustain
-children's engagement over durations (5 hours) that are getting closer to what is
+children's engagement over durations (5 hours) that are closer to what is
 expected to have an impact in a real therapeutic context.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Clinic Study: How Children Take on the Role of a Teacher}\label{normandie}
+\label{study_normandy}
 
 \paragraph{Context, Study Design}
 
@@ -688,6 +748,7 @@ give feedback to the robot), and finally do usually take their teacher's role se
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Case Study 1: Vincent}
+\label{vincent}
 
 \paragraph{Context, Study Design}
 
@@ -778,6 +839,7 @@ he knew he had to show a consistent style of writing to the robot''.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Case Study 2: Thomas}
+\label{thomas}
 
 \paragraph{Context, Study Design}
 
