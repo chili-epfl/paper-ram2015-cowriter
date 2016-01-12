@@ -253,11 +253,12 @@ We detail each of these in the following sections.
 \subsection{Generating and Learning Letters}
 
 Since our application is about teaching a robot to write, generating (initially
-bad) letters and learning from demonstrations is a core aspect of the project.
+bad) letters and learning from writing demonstrations is a core aspect of the
+project.
 
 The main insight for both the generation and the learning of letters is to
 reason about the shape of letters in their eigenspace, instead of the natural
-cartesian space. The eigenspace of each letters is spanned by the first $n$
+cartesian space. The eigenspace of each letter is spanned by the first $n$
 eigenvectors (in our experiments, $3 < n < 6$) of the covariance matrix
 generated from a standard dataset of adult letters (the UJI Pen Characters 2
 dataset~\cite{Llorens2008}).  This procedure, based on a Principle Component
@@ -449,7 +450,7 @@ in~\cite{jacq2016building, hood2015when}.
 
 Over the two years of the project, we conducted four studies in schools
 (Figure~\ref{fig:schools}). These experiments were meant to technically validate
-the system (is it actually able to autonomously write and learn from
+the system (is it actually able to autonomously write and learn from handwriting
 demonstrations?) and test the interaction (is the apparatus easy to grasp and to
 interact with for children?). We also studied the initial acceptance of the
 robot in the school environment (through several formal and informal discussions
