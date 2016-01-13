@@ -607,11 +607,19 @@ percentage of time spent by the child focusing on the task at hand. This metric
 was first devised in the context of computer-supported
 learning~\cite{sharma2014me}, and we have previously studied its applicability
 to human-robot interaction and formalized the exact methodology
-in~\cite{lemaignan2016realtime}\footnote{Note that with-me-ness is a metric that
-allows real-time computation by the robot itself: while we did not yet make
-use of it, it does in principle allow the robot to detect on-line possible
-disengagements, and eventually address them by adapting its physical
-behavior, switching to different activities, etc.}.
+in~\cite{lemaignan2016realtime}. We compute it by first estimating the focus of
+attention of the child over the course of the interaction (using real-time 6D
+head pose estimation); then, by matching this measured focus of attention
+with the \emph{expected} attentional targets. For instance, when the child is supposed
+to write a demonstration, we expect him to look at the tablet if he is actually
+engaged into the task; when the robot is telling a story,
+we expect the engaged child to look at the robot, etc. The resulting values
+(Table~\ref{tab:results-with-me-ness}) represent therefore the percentage of
+interaction where each of the children were actually focusing on the task\footnote{Note that
+with-me-ness is a metric that allows real-time computation by the robot
+itself: while we did not yet make use of it, it does in principle allow the
+robot to detect on-line possible disengagements, and eventually address them
+by adapting its physical behavior, switching to different activities, etc.}.
 
 \begin{table}[h!]
     \centering
