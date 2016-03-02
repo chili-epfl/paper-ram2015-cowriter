@@ -1,5 +1,5 @@
-%\documentclass[twocolumn]{article}
-\documentclass{article}
+\documentclass[twocolumn]{article}
+%\documentclass{article}
 
 \usepackage[utf8]{inputenc}
 
@@ -360,14 +360,14 @@ that:
 
 \end{itemize}
 
-\begin{figure}[ht!]
+\begin{figure*}[ht!]
     \centering
     \subfigure[Nine allographs of the cursive ``h'', next to the reference]{
-        \includegraphics[width=0.45\columnwidth]{h}
+        \includegraphics[width=0.45\linewidth]{h}
     }
     \subfigure[The same samples, normalized and projected in the eigenspace spanned by the
         first 3 eigenvectors: clusters arise, that actually match writing styles.]{
-        \includegraphics[width=0.45\columnwidth]{eigenspace-uniformization}
+        \includegraphics[width=0.45\linewidth]{eigenspace-uniformization}
     }
 
     \caption{\small Projecting demonstrated letters onto the eigenspace
@@ -375,7 +375,7 @@ that:
     according to their topological similarity. Allographs that are similar to
     the reference are close to it in the eigenspace.}
     \label{fig:h}
-\end{figure}
+\end{figure*}
 
 The algorithm for machine-learning becomes then a simple matter of converging at
 a specific pace towards the child's demonstration in the eigenspace.
@@ -482,7 +482,7 @@ interacting several hours with the system), and during two case studies that
 each lasted several weeks. Table~\ref{studies} gives an overview of these
 studies.
 
-\begin{table}[ht!]
+\begin{table*}[ht!]
 \centering
 \caption{\small Field studies conducted within the project}
 \label{studies}
@@ -498,7 +498,7 @@ studies.
 {\it Vincent}      & Case-study                               & 4 weeks $\times$ 1.5h  & 1                                     & 6          \\
 {\it Thomas}       & Case-study                               & 4 weeks $\times$ 1h    & 1                                     & 5          \\ \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 We report hereafter the main design choices and results for each of these
 studies and experiments. The interested reader can find supplementary details
@@ -622,7 +622,7 @@ itself: while we did not yet make use of it, it does in principle allow the
 robot to detect on-line possible disengagements, and eventually address them
 by adapting its physical behavior, switching to different activities, etc.}.
 
-\begin{table}[h!]
+\begin{table*}[h!]
     \centering
     \caption{\textbf{Levels of with-me-ness}. Percentage of interaction time
         during which the child was effectively focusing his/her attention on the
@@ -638,7 +638,7 @@ by adapting its physical behavior, switching to different activities, etc.}.
         \bottomrule
     \end{tabular}
     \label{tab:results-with-me-ness}
-\end{table}
+\end{table*}
 
 The average with-me-ness is well above 80\%, and confirms that the children
 were very much engaged into these 20 minutes of interaction with the robot,
@@ -701,7 +701,7 @@ adopted the teacher role.
 
 \paragraph{Results}
 
-\begin{table}
+\begin{table*}
     \centering
     \begin{tabular}{ccccl}
         \toprule
@@ -723,7 +723,7 @@ adopted the teacher role.
         robot. Results taken from~\cite{jacq2016building}.}
 
     \label{table:scores}
-\end{table}
+\end{table*}
 
 All children maintained their engagement during the entirety of the sessions. They
 provided on average 42 demonstrations per session. All children used the
@@ -768,7 +768,7 @@ the writing activity over such a period.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\linewidth]{diego}
+    \includegraphics[width=0.8\linewidth]{diego}
     \caption{\small Vincent correcting {\sc nao}'s attempt by rewriting the
         whole word. Empty boxes are drawn on the screen to serve as a template for the child
         and to make letter segmentation more robust.}
